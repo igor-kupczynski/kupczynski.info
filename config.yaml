@@ -1,0 +1,4 @@
+baseURL: "https://kupczynski.info/"
+languageCode: "en-us"
+title: "Igor Kupczyński"
+theme: ["github.com/theNewDynamic/gohugo-theme-ananke"]
