@@ -1,0 +1,416 @@
+---
+title: Be Your Own Certificate Authority
+tags: []
+aliases:
+- /2013/04/21/creating-your-own-certificates.html
+---
+How to create a Certificate Authority and use it to generate SSL certificates.
+<p>
+There are many reasons why you may need to create your own CA. Although you
+are advised to sign internet facing services with a certificate from a trusted
+root entity you have much more freedom when it comes to your intranet or vpn
+infrastructure. The other use cases may include a WPA2 enterprise access point
+or an https connection to a private wiki page.
+</p>
+
+<p>
+<i>This ariticle describes <b>ubuntu 12.10</b> and <b>OpenSSL 1.0.1c</b></i>
+</p>
+
+<p>
+To generate a self-signed certificate using OpenSSL on Ubuntu is fairly easy,
+even though cryptography behind it is not. You can use this post a step by
+step tutorial. Firstly we will create a CA, then we will use it to sign
+certificate requests which will be turned into self-signed SSL certificates.
+</p>
+
+<p>
+Please note that this is not an introduction to <a href="https://en.wikipedia.org/wiki/Public-key_cryptography">public-key cryptography</a>.
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Set up</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+OpenSSL should be installed by default on ubuntu. You may want to verify that
+with:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">$ which openssl
+/usr/bin/openssl
+</pre>
+</div>
+<p>
+In case it's not (and your output is empty) type:
+</p>
+<pre class="example">
+$ sudo apt-get install openssl
+</pre>
+</div>
+
+<div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Directories</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+OpenSSL requires a certain directory structure. I will assume here that
+the root directory is named <code>my-ca</code>. We can create the structure as
+follows:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">$ mkdir -p my-ca/{certs,crl,newcerts,private}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Files</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+Additionally we want to create a certificate database: <code>index.txt</code>, a file
+that stores a serial number to be generated for a certificate: <code>serial</code>
+and a configuration file <code>openssl.cnf</code>. In case of the latter we will
+simply copy the default one (<code>/etc/ssl/openssl.cnf</code> in Ubuntu).
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">$ cd my-ca
+(my-ca)$ cp /etc/ssl/openssl.cnf .
+(my-ca)$ touch index.txt
+(my-ca)$ echo '01' &gt; serial
+</pre>
+</div>
+
+<p>
+When we are done we should see the following:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">.
+├── certs/
+├── crl/
+├── newcerts/
+├── private/
+├── index.txt
+├── openssl.cnf
+└── serial
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Config file</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Now we need to customize the configuration file to match the <code>my-ca</code>
+directory structure. Edit <code>openssl.cnf</code> with your favourite editor.
+</p>
+<pre class="example">
+[ CA_default ]
+
+dir             = .                         # &lt;-- Change this
+certs           = $dir/certs
+crl_dir         = $dir/crl
+database        = $dir/index.txt
+#unique_subject = no
+
+new_certs_dir   = $dir/newcerts
+
+certificate     = $dir/certs/my-ca.crt    # &lt;-- Change this
+serial          = $dir/serial
+crlnumber       = $dir/crlnumber
+
+crl             = $dir/crl.pem
+private_key     = $dir/private/my-ca.key  # &lt;-- Change this
+RANDFILE        = $dir/private/.rand
+</pre>
+
+<p>
+Diff should look like this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">(my-ca)$ diff /etc/ssl/openssl.cnf openssl.cnf 
+42c42
+&lt; dir           = ./demoCA              # Where everything is kept
+---
+&gt; dir           = .             # Where everything is kept
+50c50
+&lt; certificate   = $dir/cacert.pem       # The CA certificate
+---
+&gt; certificate   = $dir/certs/my-ca.pem  # The CA certificate
+55c55
+&lt; private_key   = $dir/private/cakey.pem# The private key
+---
+&gt; private_key   = $dir/private/my-ca.key # The private key
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Extensions</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+For a reference, we encounter following extensions on the key files.
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col class="left"/>
+
+<col class="left"/>
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">File extension</th>
+<th scope="col" class="left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">KEY</td>
+<td class="left">A private key, should not be distributed to public.</td>
+</tr>
+
+<tr>
+<td class="left">CSR</td>
+<td class="left">A certificate request - this is generated by us or anyone who whats us to sign his or her certificate. After a certificate is generated this can be deleted.</td>
+</tr>
+
+<tr>
+<td class="left">CRT</td>
+<td class="left">A certificate, which can be publicly distributed.</td>
+</tr>
+
+<tr>
+<td class="left">CRL</td>
+<td class="left">A certificate revocation list, which can and should be publicly distributed.</td>
+</tr>
+
+<tr>
+<td class="left">PEM</td>
+<td class="left">Some servers need a single file containing concatenated KEY and CRT. PEM files can be used for that purpose.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Keys</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Since we have the infrastructure in place we can start generating the keys.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">CA key</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Firstly, we need to generate the CA key. You will need to provide a
+pass-phrase and the details of your organization.
+</p>
+<div class="org-src-container">
+
+<pre class="src src-bash">(my-ca)$ openssl req -config openssl.cnf -new -x509 -extensions v3_ca -keyout private/my-ca.key -out certs/my-ca.crt -days 1825
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-bash">Generating a 2048 bit RSA private key
+....................+++
+...........................................................................+++
+writing new private key to 'private/my-ca.key'
+Enter PEM pass phrase:
+Verifying - Enter PEM pass phrase:
+-----
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:PL
+State or Province Name (full name) [Some-State]:Wielkopolska
+Locality Name (eg, city) []:Poznan
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:AcmeLTD
+Organizational Unit Name (eg, section) []:InternetOps
+Common Name (e.g. server FQDN or YOUR name) []:acme.pl
+Email Address []:cert@acme.pl
+</pre>
+</div>
+
+<dl class="org-dl">
+<dt> <code>req</code> </dt><dd>PKCS#10 X.509 Certificate Signing Request (CSR) Management
+</dd>
+<dt> <code>-config openssl.cnf</code> </dt><dd>Use customized OpenSSL config 
+</dd>
+<dt> <code>-new</code> </dt><dd>Generate new certificate request and prompt the user for field
+values (like <code>Country Name</code>, etc).
+</dd>
+<dt> <code>-x509</code> </dt><dd>Output self-signed certificate instead of a certificate request.
+</dd>
+<dt> <code>-extensions v3_ca</code> </dt><dd>This is a CA certificate.
+</dd>
+<dt> <code>-keyout private/my-ca.key -out certs/my-ca.crt</code> </dt><dd>Where the
+certificate and its key should be generated.
+</dd>
+<dt> <code>-days 1825</code> </dt><dd>The certificate is valid roughly five years.
+</dd>
+</dl>
+
+<p>
+Please note that by default the organization details are interpreted as
+ASCII strings. You may want to use <code>-utf8</code> to change it.
+</p>
+
+<p>
+We have our own CA now! We are ready to sign any incoming certificate
+requests.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1-1" class="outline-4">
+<h4 id="sec-3-1-1">Import the root CA certificate on your intranet machines.</h4>
+<div class="outline-text-4" id="text-3-1-1">
+<p>
+If you do not want to see these warnings that connection is untasted and
+you should be take out from there, import the CA certificate to a
+browser/operating system key store. You can follow the steps outlined
+here:
+</p>
+<ul class="org-ul">
+<li><a href="http://www.cyberciti.biz/faq/firefox-adding-trusted-ca/">Firefox</a>
+</li>
+<li><a href="https://blogs.technet.com/b/sbs/archive/2007/04/10/installing-a-self-signed-certificate-as-a-trusted-root-ca-in-windows-vista.aspx?Redirected=true">IE/Windows</a>
+</li>
+</ul>
+
+<p>
+You should import the <code>my-ca.crt</code> file for this purpose.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Server certificate request</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+We will start with a private key for the webserver.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">(my-ca)$ openssl genrsa -out private/my-domain.key 2048
+</pre>
+</div>
+
+<p>
+It is generated without a password, so if you restart a webserver the
+certificate needs not to be decrypted by entering a password.
+</p>
+
+<p>
+Now we can start with the request.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">(my-ca)$ openssl req -new -key private/my-domain.key -out my-domain.csr
+</pre>
+</div>
+
+<p>
+You will be prompted for the organization details, so consider using also
+the <code>-utf8</code> option. Please bear in mind that the <code>Common Name</code> field is
+very important, as it indicates your domain, e.g. <code>my-domain.com</code>. You may
+also want to use <code>*.my-domain.com</code> for certificates valid also for
+subdomains.
+</p>
+
+<p>
+Finally, we can sign it.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-bash">(my-ca)$ openssl ca -config openssl.cnf -policy policy_anything -out certs/my-domain.crt -infiles my-domain.csr
+</pre>
+</div>
+
+<p>
+<code>policy_anything</code> is defined in the <code>openssl.cnf</code>.
+</p>
+
+<p>
+This creates two files:
+</p>
+<dl class="org-dl">
+<dt> certs/my-domain.crt </dt><dd>Signed certificate
+</dd>
+<dt> newcerts/01.pem </dt><dd>The same with certificate serial id (not needed).
+</dd>
+</dl>
+
+
+<p>
+The key (<code>my-domain.key</code>) and the certificate (<code>my-domain.crt</code>) can be used
+to configure https connection to a web server. The certificate request
+(<code>my-domain.csr</code>) can be safely deleted.
+</p>
+</div>
+
+<div id="outline-container-sec-3-2-1" class="outline-4">
+<h4 id="sec-3-2-1">Verify the certificate</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+You can see the certificate’s info with the following:
+</p>
+<pre class="example">
+(my-ca)$ openssl x509 -subject -issuer -enddate -noout -in certs/my-domain.crt
+</pre>
+
+<p>
+Or the following:
+</p>
+<pre class="example">
+(my-ca)$ openssl x509 -in certs/my-domain.crt -noout -text
+</pre>
+
+<p>
+And verify that the certificate is valid for server authentication with
+the following:
+</p>
+<pre class="example">
+(my-ca)$ openssl verify -purpose sslserver -CAfile certs/myca.crt certs/my-domain.crt
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Sources</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+Hope this post is useful for you. I used the following sources when
+preparing it:
+</p>
+<ul class="org-ul">
+<li><a href="http://www.area536.com/projects/be-your-own-certificate-authority-with-openssl/">http://www.area536.com/projects/be-your-own-certificate-authority-with-openssl/</a>
+</li>
+<li><a href="http://www.g-loaded.eu/2005/11/10/be-your-own-ca/">http://www.g-loaded.eu/2005/11/10/be-your-own-ca/</a>
+</li>
+<li>And following man pages: <code>openssl</code>, <code>req</code>, <code>ca</code>, <code>x509</code>, <code>x509v3_config</code>. 
+</li>
+</ul>
+</div>
+</div>
