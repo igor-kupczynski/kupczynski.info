@@ -31,7 +31,7 @@ name = "Tags"
 url = "/tags/"
 weight = 1
 [[menu.main]]
-name = "License"
+name = "Legal"
 url = "/legal/"
 weight = 2
 [[menu.main]]
