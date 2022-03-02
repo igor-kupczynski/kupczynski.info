@@ -1,1 +1,39 @@
-/**/
+html {
+	font-family: system-ui,
+				 "-apple-system",
+				 "BlinkMacSystemFont",
+                 "Segoe UI",
+                 "Roboto",
+                 "Helvetica Neue",
+                 "Ubuntu",
+                 "Arial",
+                 sans-serif;
+}
+
+@supports (font-variation-settings: normal) {
+	html {
+		font-family: system-ui,
+					 "-apple-system",
+					 "BlinkMacSystemFont",
+	                 "Segoe UI",
+	                 "Roboto",
+	                 "Helvetica Neue",
+	                 "Ubuntu",
+	                 "Arial",
+	                 sans-serif;
+	}
+}
+
+code {
+	font-family: ui-monospace,
+	             Menlo, Monaco,
+	             "Cascadia Mono", "Segoe UI Mono",
+	             "Roboto Mono",
+	             "Oxygen Mono",
+	             "Ubuntu Monospace",
+	             "Source Code Pro",
+	             "Fira Mono",
+	             "Droid Sans Mono",
+	             "Courier New",
+	             monospace;
+}
