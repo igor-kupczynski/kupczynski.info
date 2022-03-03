@@ -1,4 +1,4 @@
-name: Generate hugo output on gh-pages
+name: Generate hugo output and save it to `output` branch
 
 on:
   push:
@@ -32,3 +32,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+          publish_branch: output
