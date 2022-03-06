@@ -10,7 +10,7 @@ One of the VPNs I connect to sets the DNS server for the link. It is an OpenVPN 
 
 At the time of writing, I'm on 18.10, and I write it from that perspective. Ubuntu uses [systemd-resolved](https://www.freedesktop.org/wiki/Software/systemd/resolved/) service to provide a local DNS resolution. We need to "push" the VPN DNS address to this service. We can do it using [jonathanio/update-systemd-resolved](https://github.com/jonathanio/update-systemd-resolved) helper script.
 
-# systemd-resolved for DNS resolution<a id="sec-1"></a>
+## systemd-resolved for DNS resolution<a id="sec-1"></a>
 
 Consult its readme for details, but the steps are these:
 
@@ -36,11 +36,11 @@ hosts:          files resolve mdns4_minimal [NOTFOUND=return] dns
 
 **Note** This may not be needed as ubuntu moved to use [`/etc/resolv.conf` and DNS stub directly](https://bugs.launchpad.net/ubuntu/+source/systemd/+bug/1685045); this may also result in a weird "bug" if your 18.10 is updated from a previous version. See the last section
 
-## Interlude: Why is this helper script needed?<a id="sec-1-1"></a>
+### Interlude: Why is this helper script needed?<a id="sec-1-1"></a>
 
 OpenVPN (at least on Ubuntu 18.10), comes with its own helper script `/etc/openvpn/update-resolv-conf`, but the problem is that the script relies on `resolvconf` service which is replaced with `systemd-resolved`. This is why we need the helper.
 
-# .ovpn client configuration<a id="sec-2"></a>
+## .ovpn client configuration<a id="sec-2"></a>
 
 Now that we have the helper script setup, we need to make the `*.ovpn` profiles us it. We can either edit the files directly and add the lines below to the `*.ovpn`:
 
@@ -54,7 +54,7 @@ down-pre
 Or, if you don't want to edit it, you can pass them to the `openvpn` call:
 
 ```sh
-# Something like:
+## Something like:
 sudo openvpn --config ${NAME}.ovpn \
      --script-security 2 \
      --up /etc/openvpn/scripts/update-systemd-resolved \
@@ -62,11 +62,11 @@ sudo openvpn --config ${NAME}.ovpn \
      --down-pre
 ```
 
-# Troubleshooting<a id="sec-3"></a>
+## Troubleshooting<a id="sec-3"></a>
 
 You've followed all the steps, but the DNS is not being consulted.
 
-## Conflict between resolvconf and systemd-resolved<a id="sec-3-1"></a>
+### Conflict between resolvconf and systemd-resolved<a id="sec-3-1"></a>
 
 This is common if your Ubuntu 18.10 is migrated from the older version, or if you've installed `resolvconf` package manually.
 
@@ -96,7 +96,7 @@ $ systemctl status systemd-resolved.service
 
 Jan 09 13:13:27 p51 systemd-resolved[1087]: Server returned error NXDOMAIN, mitigating potential DNS violation DVE-2018-0001, retrying 
 Jan 09 13:13:55 p51 systemd-resolved[1087]: Server returned error NXDOMAIN, mitigating potential DNS violation DVE-2018-0001, retrying 
-# (...)
+## (...)
 ```
 
 It may indicate a conflict between `resolvconf` and `systemd-resolvd`. Make sure that `resolv.conf` points to the systemd version:

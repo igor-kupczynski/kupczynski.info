@@ -11,7 +11,7 @@ by Ken Segall. This post summarizes my notes taken while reading the book.
 
 [![Insanely Simple](/archive/2017-10-insanely-simple-cover.jpg)](https://www.goodreads.com/book/show/13383957-insanely-simple)
 
-# Background 
+## Background
 
 Ken Segall is a marketing director who worked with Steve Jobs at Apple and
 NeXT for 10 years or so. He also worked with Dell, Intel, IBM and other tech
@@ -22,10 +22,10 @@ depicts Steve Jobs as a man devoted to simplicity and it suggests that
 simplicity is the key ingredient of the Apple's success.
 
 
-# Key ideas
+## Key ideas
 
 
-## Simple is not easy
+### Simple is not easy
 
 People crave for simplicity and will choose it over complexity given all other
 things equal. But simplicity is not necessarily the easiest path. It requires
@@ -34,7 +34,7 @@ hard work, focus and often courage to challenge the status quo.
 Simplicity requires both brains and common sense.
 
 
-## Brutal honesty
+### Brutal honesty
 
 Simplify the communications as much as possible. Be honest, event if it
 requires to be brutal. You don't need to be a prick, but avoid partial
@@ -52,7 +52,7 @@ of times. Their most successful competitive ads were not arrogant at all, yet
 very aggressive --- the [Mac vs PC series](https://www.youtube.com/watch?v=0eEG5LVXdKo).
 
 
-## Sign only the work you believe in and deliver only your best work
+### Sign only the work you believe in and deliver only your best work
 
 The author gives a story where a couple of his teams created ads to be present
 to Steve Jobs. The author didn't like any of ads of one of the teams, but
@@ -76,7 +76,7 @@ advantage if needed. And if possible do not let other present your case. You
 are the best presenter for your own idea.
 
 
-## Small groups of smart people
+### Small groups of smart people
 
 I find this probably the most important message of this book. If you want an
 idea to be successful you need a group of smart people working on it. You want
@@ -107,7 +107,7 @@ groups. The process ensures that an ad is not terrible and that it doesn't
 offend anyone. But it doesn't produce brilliance, just mediocrity.
 
 
-## Time-constrained and focused projects
+### Time-constrained and focused projects
 
 It is important to set the projects in motion. Too much time often leads to
 overthinking. Constant pressure is what keeps things moving ahead with
@@ -123,7 +123,7 @@ possible killed. They are just means to an end.
 
 
 
-## Simplify and minimize
+### Simplify and minimize
 
 Minimal is attractive and a simple message is the best one.
 
@@ -137,7 +137,7 @@ The same applies to teams, meetings and communications (see other points in
 the post).
 
 
-## Go all in
+### Go all in
 
 Every decision should be made with a simplicity in mind. Replicating just one
 aspect is not enough to secure a success. An example of that is a Dell's
@@ -147,13 +147,13 @@ culture made it a failure and eventually lead to a shut down. Compare this is
 with the MacBook Air success.
 
 
-# Stories
+## Stories
 
 Some of the chapters do not offer new themes, but are like case studies. They
 tie in nicely to the points the author makes through the book.
 
 
-## Think iconic
+### Think iconic
 
 Chapter 5 presents the story behind [*think different*](https://www.youtube.com/watch?v=cFEarBzelBs) brand campaign.
 
@@ -177,7 +177,7 @@ with not offending anyone than with succeeding. Again, involvement of the key
 decision maker is paramount.
 
 
-## Think human
+### Think human
 
 Steve Jobs cried when he created his first iMovie movie. It was 1999 and he
 put together a movie of his daughter. It was an inspiration for an ad
@@ -196,7 +196,7 @@ Three events made Steve more humble: (1) Being kicked out of Apple, (2)
 Unsuccessful NeXT business, (3) Cancer.
 
 
-# My opinion
+## My opinion
 
 The message of simplicity resonates strongly with me. It is definitely not new
 in the engineering world, e.g. the KISS principle. It is often hard to get

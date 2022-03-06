@@ -55,7 +55,7 @@ the notes are uncomplete and **may** be misleading. Proceed at your own risk :)
 
 
 
-# GeeCON #10
+## GeeCON #10
 
 It was a tenth, anniversary GeeCON. Hence the cake:
 
@@ -65,7 +65,7 @@ I think it was a great event, with lot of interesting talks and good speakers. I
 had a very good time and feel it was three days well spend. Props for the
 organizing committee for all their hard work on GeeCON over the years.
 
-## Booths
+### Booths
 
 Well, I've attended most of the sessions, so I didn't really have the time to
 visit and chat with majority of the folks there, but a honorable mention goes to
@@ -85,13 +85,13 @@ the nice stickers.
 
 ![scala animals](/archive/2018-05-scala-animal.jpg)
 
-# Day 1
+## Day 1
 
-## Innovate or Die ... or Don't
+### Innovate or Die ... or Don't
 
 Main sponsor --- EY --- keynote.
 
-## A War of Words: Self-Awareness for Introverts
+### A War of Words: Self-Awareness for Introverts
 
 Second keynote.
 
@@ -147,7 +147,7 @@ negotiations.
               for XYZ, I contribute ABC, etc.")
 
 
-## Creating Secure Software: Benefits from Cloud Thinking
+### Creating Secure Software: Benefits from Cloud Thinking
 
 Nice talk from Daniel Sawano. He preached the concept of rotating secrets often,
 and reiterated some important concepts in cloud apps security.
@@ -221,7 +221,7 @@ Comments:
 - good pace
 - clear structure
 
-## What the annotations done to us?
+### What the annotations done to us?
 
 This talk by Adam Warski from software mill was dear to my heart. How the
 modern frameworks abuse annotations and offered some alternatives, especially in
@@ -284,7 +284,7 @@ the java 8+ world.
         - ceylon
             - type-safe metamodel
             
-## gRPC vs REST
+### gRPC vs REST
 
 Two software engineers:
 
@@ -321,7 +321,7 @@ talk with an elaborate [demo](https://github.com/grpcvsrest). I enjoyed that one
 
 ![REST vs gRPC summary](/archive/2018-05-rest-grpc-summary.jpg)
 
-## Starting with Ethereum, a developer approach
+### Starting with Ethereum, a developer approach
 
 Note for future reader --- it's 2018 and a day without crypto/blockchain is a
 day wasted.
@@ -361,17 +361,17 @@ and with an extensive live demo.
                 - testing "framework"
 
 
-## Fn Project — an open source container native FaaS platform
+### Fn Project — an open source container native FaaS platform
 
 David Delabassee from Oracle presented Fn, a function-as-a-service from Oracle.
 
 
-## Kotlin coroutines
+### Kotlin coroutines
 
 Marcin Moskała presented this new feature of Kotlin. He actually did a deep
 dive, and showed how the corutines are implemented.
 
-## Conference party
+### Conference party
 
 ![Hala Główna](/archive/2018-05-hala-glowna.jpg)
 
@@ -385,9 +385,9 @@ extra speakers' dinner, but it cloud have been held on the day #2. Don't
 get me wrong, I had a good time and really enjoyed the conversations, but I feel
 it cloud have been so much better.
 
-# Day 2
+## Day 2
 
-## Demystifying Java 9 features
+### Demystifying Java 9 features
 
 Very thoughtful talk by Ionut Balosin. He listed some of the important java 9
 features and presented his benchmark results. Good talk both as a tour of the
@@ -449,7 +449,7 @@ features and in giving suggestions on when to use them.
     - improved performance with synchronized methods (when a critical section
       exclusivity is guarded by a monitor).
 
-## The future of Java 
+### The future of Java
 
 Tobi Ajila introduced projects Valhalla and Panama. I'm super excited about
 Valhalla :) 
@@ -527,7 +527,7 @@ Valhalla :)
         - off-heap data access
         - intrinsics for simd
 
-## A crash course in modern hardware
+### A crash course in modern hardware
 
 Cliff Click again, this talk was a good continuation of the Java Future. Cliff
 described what changed in the modern hardware since the von Naumann model.
@@ -591,7 +591,7 @@ described what changed in the modern hardware since the von Naumann model.
     - use a profiler (and a hardware profile to get out of cache)
 
 
-## Modern SQL: evolution of a dinosaur
+### Modern SQL: evolution of a dinosaur
 
 This was one of the best talks on the conference. Markus Winand blogs at
 [modernsql](https://modern-sql.com) and
@@ -646,7 +646,7 @@ of SQL92. I've enjoyed it so much.
   forked and start adding features, which in turned put pressure on MySQL and on
   Postgres.
 
-## Engineering architecture
+### Engineering architecture
 
 Jakub Kubryński who promises he is not an ivory tower architect, and can code
 still :) The talk reveled around the idea that you can't improve what you don't
@@ -669,7 +669,7 @@ measure. And that it applies to the software architecture as well.
     - "quantify and write down the scale" (this summarizes fir 15 mins of the
       talk)
 
-## Using an open source library? Beware of vulnerabilities!
+### Using an open source library? Beware of vulnerabilities!
 
 Bruno Bossola preached on how important is to check your dependencies, as they
 **are** vulnerable. Good talk, entertaining speaker and nice demo. Plus, I've
@@ -700,7 +700,7 @@ learned that UK fruits are not real fruits. Italian ones are!
     - put something to check the dependencies in the pipelines
 
 
-## Nothing but Models: Quest for the Roots of Complexity
+### Nothing but Models: Quest for the Roots of Complexity
 
 Julian Warszawski from LendUp. Deeply philosophical talk.
 
@@ -721,7 +721,7 @@ Julian Warszawski from LendUp. Deeply philosophical talk.
     - delivery speed of the software always decreases
 
 
-## Manage Yourself!
+### Manage Yourself!
 
 Jurgen started with a so-so joke, but it only got better afterwards. It turned to
 be nice and entertaining talk. Perfect to close the day #2. I've learned how
@@ -755,11 +755,11 @@ Comments:
 - I really liked the _i want to be a circle, but my org makes me a square_ narrative.
 
 
-# Day 3
+## Day 3
 
 Oh day 3. It started with a super sweet JVM internals series. 
 
-## Deep dive into the Eclipse OpenJ9 GC technologies
+### Deep dive into the Eclipse OpenJ9 GC technologies
 
 Charlie Gracie presented OpenJ9 JVM and gave a tour of its GC algorithms. He
 also gave some rule of thumb on when to apply which. With the usual disclaimer,
@@ -823,7 +823,7 @@ hotspot is catching up with CDS (see the next talk).
 
 
 
-## Class Data Sharing 
+### Class Data Sharing
 
 [https://simonis.github.io/GeeCON2018/CDS](https://simonis.github.io/GeeCON2018/CDS)
  
@@ -860,7 +860,7 @@ mem footprint gains.
       different archives for different versions of you apps
 
 
-## Java Memory Model Unlearning Experience
+### Java Memory Model Unlearning Experience
 
 Aleksey Shipiiev is quite famous in the java internals world, I was really
 excited about this talk and Aleksey indeed delivered. Also, I've shaken his hand
@@ -900,7 +900,7 @@ write a high-perf library.
 ![Ordering modes](/archive/2018-05-as-locks.jpg)
 
 
-## Blockchain more than Bitcoin
+### Blockchain more than Bitcoin
 
 I blockchain, again! this time by Andrzej Grzesik.
 
@@ -946,13 +946,13 @@ what can you do with Bitcoin?
 - ICOs
     - initial coin offering
 
-## NoSQL Means No Security?
+### NoSQL Means No Security?
 
 This was a talk by my colleague Philipp Kern. Fast paced and entertaining.
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/hashtag/GeeCON?src=hash&amp;ref_src=twsrc%5Etfw">#GeeCON</a> slides on &quot;NoSQL Means No Security?&quot; with MongoDB, Redis, and Elasticsearch<a href="https://t.co/7hZ7yEiivq">https://t.co/7hZ7yEiivq</a><br>Thanks for another great GeeCON! <a href="https://t.co/6rIxRDNRp0">pic.twitter.com/6rIxRDNRp0</a></p>&mdash; Philipp Krenn (@xeraa) <a href="https://twitter.com/xeraa/status/994943163654725633?ref_src=twsrc%5Etfw">May 11, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
-## QWERTY or DVORAK? Debunking the Keyboard Layout Myths
+### QWERTY or DVORAK? Debunking the Keyboard Layout Myths
 
 Hanno Embregts shared his exp on switching to dvorak. Spoiler alert: it wasn't
 for speed, and 1y+ was not enough to beat his querty speed record :)
@@ -960,7 +960,7 @@ for speed, and 1y+ was not enough to beat his querty speed record :)
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Thank you <a href="https://twitter.com/hashtag/geecon?src=hash&amp;ref_src=twsrc%5Etfw">#geecon</a> attendees for listening to my very geeky thoughts on keyboard layouts! The slide deck can be found here: <a href="https://t.co/pUYSxOxWie">https://t.co/pUYSxOxWie</a></p>&mdash; Hanno Embregts (@hannotify) <a href="https://twitter.com/hannotify/status/994946610667884549?ref_src=twsrc%5Etfw">May 11, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
 
 
-## Using Reactive APIs
+### Using Reactive APIs
 
 Venkat Subramanaiam is a well known speaker for java conference goers. No
 surprises this time, nice talk about new reactive APIs introduced in java 9.
@@ -1013,7 +1013,7 @@ surprises this time, nice talk about new reactive APIs introduced in java 9.
         - rxjava
 - /example, live demo/
 
-# Conclusions
+## Conclusions
 
 All of the talks were recorded and the videos should be available shortly on
 the [geecon youtube channel](https://www.youtube.com/channel/UCVnJYdr91EZW8YvtMrxB1bg).

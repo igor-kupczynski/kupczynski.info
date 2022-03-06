@@ -33,7 +33,7 @@ the inspiration to write this blogpost.
 <!-- markdown-toc end -->
 
 
-# What is Class Data Sharing?
+## What is Class Data Sharing?
 
 Class Data Sharing is a JVM feature, which allows multiple JVMs to share
 loaded classes (and some other things) via shared memory.
@@ -61,11 +61,11 @@ In this blog post we'll investigate how to prepare such a CDS archive
 and look at potential benefits. We'll use elasticsearch docker image to
 conduct the experiment.
 
-# Prepare CDS
+## Prepare CDS
 
 All of the code presented here is [posted on github](https://github.com/igor-kupczynski/class-data-sharing/tree/master/target).
 
-## Intro — we need OpenJDK 10
+### Intro — we need OpenJDK 10
 
 Let's use elasticsearch docker image to test the impact of class data
 sharing.
@@ -73,7 +73,7 @@ sharing.
 First, we need to repackage it with openjdk 10.
 
 ``` dockerfile
-# Dockerfile-openjdk10
+## Dockerfile-openjdk10
 FROM docker.elastic.co/elasticsearch/elasticsearch-oss:6.2.4
 
 COPY pkg/ /app/pkg
@@ -89,7 +89,7 @@ ENV JAVA_HOME /opt/java/jdk-10.0.1
 Let's create a Makefile, we'll add more to it as we go:
 
 ``` makefile
-# Makefile
+## Makefile
 .PHONY: help
 help:
     @ echo "# Elasticsearch and Class Data Sharing (CDS) experiment"
@@ -120,7 +120,7 @@ And now we can get our repackaged image:
 make build-jdk10
 ```
 
-## Create a list of classes used by Elasticsearch
+### Create a list of classes used by Elasticsearch
 
 We're going to start elastics, make it respond to a simple request and
 let it log all the classes it uses to a file
@@ -196,7 +196,7 @@ any classes manually later on, you should exercise this codepath. In our
 case we just wait until elasticsearch can respond to a simple rest
 request. This is not perfect, but good enough for our experiment.
 
-### JVM error
+#### JVM error
 
 Normally, the next step would be to take the `elasticsearch_appcds`
 class list and use it to populate the cache file, however I've hit some
@@ -210,7 +210,7 @@ I leave the root cause investigation for some later time. Now, let's
 just trim the class list.
 
 ``` makefile
-# Workaround of the JVM error
+## Workaround of the JVM error
 cache/elasticsearch_appcds.cls-thin: cache/elasticsearch_appcds.cls
     @ head -n 6218 cache/elasticsearch_appcds.cls > cache/elasticsearch_appcds.cls-thin
     @ echo "Filtered the class list. Number of classes: "
@@ -219,7 +219,7 @@ cache/elasticsearch_appcds.cls-thin: cache/elasticsearch_appcds.cls
 generate-class-list: cache/elasticsearch_appcds.cls-thin
 ```
 
-## Prepopulate the class cache
+### Prepopulate the class cache
 
 Now that we have the class list, let's use it to pre-populate the class
 cache. Contrary to the previous step, here the jvm won't run the app. It
@@ -288,14 +288,14 @@ $ ls -lah cache/elasticsearch_appcds.jsa
 -r--r--r--  1 igor  staff    79M May 20 20:52 cache/elasticsearch_appcds.jsa
 ```
 
-## Package it with the container
+### Package it with the container
 
 We have the class cache, now we can package it with the container.
 
 Here is the dockerfile:
 
 ``` dockerfile
-# Dockerfile-cds
+## Dockerfile-cds
 FROM ikupczynski/elasticsearch-oss:6.2.4-openjdk10
 
 COPY cache/ /app/cache
@@ -321,7 +321,7 @@ here with
 docker pull ikupczynski/elasticsearch-oss:6.2.4-cds
 ```
 
-## Convenience targets to run elasticsearch
+### Convenience targets to run elasticsearch
 
 Let's define some `make` targets to let us run elasticsearch both with
 and without CDS.
@@ -344,7 +344,7 @@ clean-nocds-logs:
 run-nocds: clean-nocds-logs
     @ $(RUN_NO_CDS) --rm $(CDS_IMAGE)
 
-# `time-nocds` given mostly for illustration, it is not acurate
+## `time-nocds` given mostly for illustration, it is not acurate
 .PHONY: time-nocds
 time-nocds:
     @ $(RUN_NO_CDS) -p 9200:9200 --name run-no-cds -d $(CDS_IMAGE)
@@ -373,7 +373,7 @@ clean-cds-logs:
 run-cds:
     @ $(RUN_CDS) --rm $(CDS_IMAGE)
 
-# `time-cds` given mostly for illustration, it is not acurate
+## `time-cds` given mostly for illustration, it is not acurate
 .PHONY: time-cds
 time-cds:
     @ $(RUN_CDS) -p 9200:9200 --name run-cds -d $(CDS_IMAGE)
@@ -389,18 +389,18 @@ make run-cds
 make run-nocds
 ```
 
-# Experiment
+## Experiment
 
-## Let's see how the classes are loaded
+### Let's see how the classes are loaded
 
 We can run both versions in the terminal, and then inspect logs:
 
 ``` bash
 $ make time-nocds
-# ...
+## ...
 
 $ make time-cds
-# ...
+## ...
 
 
 $ grep 'org.elasticsearch.bootstrap.Bootstrap ' logs/*
@@ -426,13 +426,13 @@ $ grep -c 'shared objects file' logs/classload-cds.log
 2028
 ```
 
-## Memory usage
+### Memory usage
 
 Let's start with no class data sharing:
 
 ``` bash
 $ make run-nocds  # 4 times, different terminals
-# (...)
+## (...)
 
 
 $ docker stats
@@ -449,7 +449,7 @@ And with class data sharing
 
 ``` bash
 $ make run-cds  # 4 times
-# (...)
+## (...)
 
 $ docker stats
 CONTAINER ID        NAME                       CPU %               MEM USAGE / LIMIT     MEM %               NET I/O             BLOCK I/O           PIDS
@@ -463,7 +463,7 @@ Reported mem usage: `1.152`, `1.153`, `1.154`, `1.171 [GiB]`
 
 Again, not really a benchmark, but we can see a `5--20 MiB` improvement.
 
-# Recap
+## Recap
 
 To create a class data archive, we need to:
 
@@ -504,7 +504,7 @@ lower startup time improves the UX greatly, you should consider using
 Class Data Sharing. Coincidentally, if you run a serverless platform,
 both of these conditions apply.
 
-# Conclusions
+## Conclusions
 
 Class data sharing allows for shorter startup times and lower memory
 usage (if running multiple instances). Volker Simonis reports [30%
@@ -514,7 +514,7 @@ need to start your app often (e.g. scripts) or run multiple copies of it
 (orchestration, serverless), and you are OpenJDK 10 compatible (for
 application class sharing) give it a try.
 
-## Ideas for future posts
+### Ideas for future posts
 
   - Why does JVM complain about full 7k list of classes for
     elasticsearch?

@@ -8,7 +8,7 @@ aliases:
 ---
 Use cases for Private Link and differences in its implementation across the major Cloud Providers
 
-# Private Link
+## Private Link
 
 Private Link allows secure connectivity to services hosted on different Cloud provider accounts.
 
@@ -31,7 +31,7 @@ Private Link allows secure connectivity to services hosted on different Cloud pr
 * _Private Link_ is not a standard name, it is a service from AWS. It is called _AWS PrivateLink_. AWS was first to offer such a service and then the name caught on. Azure calls their equivalent _Azure Private Link_ and GCP has _Private Service Connect_ (or PSC).
 * Private Link can be also used to access cloud provider services (such as S3), and others. Here we are focused on the SaaS service provider use case.
 
-# Use case
+## Use case
 
 We run a SaaS company. We offer a simple service to send emails:
 
@@ -46,7 +46,7 @@ curl -XPOST -H 'Authorization: ...' https://customerA.my-saas.io/emails -d '{
 
 The service is easy to use and developer-friendly. It catches on.
 
-## Security comes in layers
+### Security comes in layers
 
 Cecilia from MegaCorp, Inc. wants to use `my-saas.io` in her latest project. This is a big contract for us! However, she adheres to [_defense in depth_](https://en.wikipedia.org/wiki/Defense_in_depth_(computing)).
 
@@ -54,9 +54,9 @@ The base URL of her account `https://megacorp.my-saas.io` is easy to guess. Even
 
 Cecilia would like us to drop any connections to `https://megacorp.my-saas.io` unless they come from their VPC.
 
-# Solution sketch
+## Solution sketch
 
-## PROXY protocol v2
+### PROXY protocol v2
 
 How can we attribute connections to specific customers? All the connections come from the same IP address (that one of the _Private Link Service_).
 
@@ -75,7 +75,7 @@ In practice, PP2 adds a binary (but unencrypted) blob at the start of the byte s
 
 Note that PP2 is an option. By default it is disabled and you need to explicitly enable it.
 
-## Back to our solution
+### Back to our solution
 
 1. Customers fill in their *link IDs*.
 2. We add a proxy (can work at L7 or L4):
@@ -91,7 +91,7 @@ All connections to customer resources are dropped, except if they originate from
 ![Private Link](/archive/2022-01-private-link.png)
 
 
-## Similarities with the *classic* IP filtering
+### Similarities with the *classic* IP filtering
 
 ![IP filtering](/archive/2022-01-ip-filtering.png)
 
@@ -103,7 +103,7 @@ In the cloud this is not feasible, there are no static IPs on either side:
 * Customers often don't have static IPs for their egress traffic.
 
 
-## Alternative solution: VPC peering
+### Alternative solution: VPC peering
 
 VPC peering allows two VPCs to share network address space—similarly to how you may use a switch to join two network segments.
 
@@ -117,7 +117,7 @@ This sounds like a good idea, but has a couple of drawbacks for our SaaS use cas
 2. The access is bidirectional as if the resources were in the same network.
     - You can and should set up access-control rules, but an error in them may result in your customers being able to access your infrastructure and/or you being able to access your customers' infrastructure.
 
-# Security considerations
+## Security considerations
 
 Can you trust the PP2 header? Can it be spoofed?
 
@@ -132,7 +132,7 @@ The scenario we need to watch out for is someone adding their own PP2 header, an
 	* **GCP**: Similarly to Azure, the traffic from the public internet doesn't get GCP-added PP2 headers.
 
 
-# Differences between cloud providers
+## Differences between cloud providers
 
 |  | AWS | Azure | GCP |
 |:--|:--|:--|:--|
@@ -143,9 +143,9 @@ The scenario we need to watch out for is someone adding their own PP2 header, an
 
 If you want to parse the PP2 headers in go—or compare notes on implementation—check [`tlvparse` package in pires/go-proxyproto](https://github.com/pires/go-proxyproto/tree/main/tlvparse). A go library which supports all of them.
 
-## Quirks
+### Quirks
 
-### At least one overlapping AZs is required in AWS
+#### At least one overlapping AZs is required in AWS
 
 Both the source and the target VPCs need at least one overlapping Availability Zone to form the Private Link connection.
 
@@ -168,13 +168,13 @@ $ aws ec2 describe-availability-zones --region us-east-1 | jq -c '.AvailabilityZ
 ```
 
 
-## Azure requires different LBs
+### Azure requires different LBs
 
 You need a separate LB to handle Private Link traffic and public internet traffic. As soon as you attach Private Link Service to your LB it stops serving public internet traffic. At least this is what I've found in my tests, as far as I know, this limitation is not documented.
 
 Create two different LBs and test the configuration in a pre-prod account before changing the production configuration.
 
-## DNS support
+### DNS support
 
 How do customers access our service over Private Link? The endpoints get a static IP (from the source IP subnet) and a DNS alias.
 
@@ -198,7 +198,7 @@ How do they know that everything is configured correctly? If they forgot the DNS
 
 Another suggestion would be to use a different domain—unresolvable from the public internet—for the Private Link traffic.
 
-### Private DNS integration
+#### Private DNS integration
 
 The cloud providers offer automatic DNS integration. You can configure your Private Link Service, that any endpoint connecting to it will automatically add `my-saas.io` (or other domain) to the private DNS of its VPC[^5].
 
@@ -211,11 +211,11 @@ curl -XPOST -H 'Authorization: ...' https://my-saas.io/emails -d '{
 }'
 ```
 
-# Summary
+## Summary
 
 We've learned about Private Link and how it can act as an *IP filtering* for the Cloud. We've presented a fictional SaaS company, and solved their use case with Private Link. We've discussed security considerations, differences in implementation, and quirks of different cloud providers.
 
-## Resources
+### Resources
 
 - See the *Learn more* section in the table above.
 

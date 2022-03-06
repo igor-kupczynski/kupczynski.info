@@ -10,7 +10,7 @@ I've read [*12 Rules for Life: An Antidote to
 Chaos*](https://www.amazon.com/12-Rules-Life-Antidote-Chaos/dp/0345816021) by
 Jordan Peterson.
 
-# Background 
+## Background
 
 I've heard about Professor Jordan Peterson because of my colleague, who is a fan
 of him. I've watched the famous BBC interview with Cathy Newman. The interview
@@ -19,7 +19,7 @@ are a plenty of recording and analysis of the interview on youtube. I've got
 intrigued and decided to give Peterson's latest book a shot.
 
 
-# 12 Rules for Life
+## 12 Rules for Life
 
 The book is structured around 12 rules that the author believes are essential. I
 think the book is a bit chaotic and the author mixes life advice, philosophy,
@@ -29,10 +29,10 @@ resonated with me the most. There are a few places where I don't share the
 author opinions, and I'm ignoring them here.
 
 
-# Main themes
+## Main themes
 
 
-## Take responsibility
+### Take responsibility
 
 This is probably the most important theme in the book. Peterson seems to look at
 responsibility in a stoic way. Life is suffering and pain, but you need to take
@@ -63,19 +63,19 @@ stupid*](https://en.wikipedia.org/wiki/It%27s_the_economy,_stupid). The man in
 the picture reads a newspaper with articles about conspiracy theories, foreign
 agents, and communist regime apparatchiks.
 
-### Delayed gratification
+#### Delayed gratification
 
 Purse what is meaningful. Be disciplined and improve problems around you. Like
 in *the hacker way*, focus on the most important things first.
 
 
-## Smile and the world will smile back at you
+### Smile and the world will smile back at you
 
 Surprisingly, when you smile, you feel happy. Take the posture of a confident
 person --- stand up straight with your shoulders back. And live up to it.
 
 
-## Retrospection
+### Retrospection
 
 Learning is somewhere in between what we know and what is dangerous. Too safe
 environments are not fun, and won't teach you too much.
@@ -87,7 +87,7 @@ your previous self.
 Again, surprisingly stoic.
 
 
-## Conversation is a learning opportunity
+### Conversation is a learning opportunity
 
 True listening is really rare. Try to listen what others have to say, instead of
 waiting for your turn to talk. Routinely summarize what the other participants
@@ -102,7 +102,7 @@ can say that we outsource our own sanity.
 > then consists not of the knowledge you already have, but the continual search
 > for knowledge, which is the highest form of wisdom.
 
-### Helping others
+#### Helping others
 
 Don't solve problems for folks --- listen instead of giving the advice (side
 note: you give an advice to feel superior). Sounds a lot like Socrates.
@@ -115,7 +115,7 @@ badly for you. Especially, if the person doesn't appreciate it. If someone
 genuinely needs help and wants to improve then engage.
 
 
-## Brutal honesty/simplicity
+### Brutal honesty/simplicity
 
 Articulate your needs or wants. Especially to folks that matter to you. Know
 what you want. Be honest with yourself. On the one hand, understand what you want
@@ -130,7 +130,7 @@ Similar to the brutal honesty of Steve Jobs in *Insanely simple*.
 Also, keep it simple. When interacting with other, (1) limit the rules, (2) use
 minimum necessary force.
 
-## Life is suffering
+### Life is suffering
 
 There is a hardly a family without tragedy or suffering. This is a natural state
 of affairs. If it happens to you, don't go into nihilism. Accept it, live up to
@@ -141,7 +141,7 @@ your duty, improve your position where you can, help the ones that deserve it.
 Also, appreciate wonders around you.
 
 
-# Raw Notes
+## Raw Notes
 
 Taken while reading the book.
 
@@ -153,7 +153,7 @@ Taken while reading the book.
 * Take responsibility for your life.
 
 
-## Rule 1 / Stand up straight with your shoulders back
+### Rule 1 / Stand up straight with your shoulders back
 
 * When the aristocracy catches a cold, working class dies of pneumonia.
 * The premise is that hierarchies are rooted in millions of years of evolution.
@@ -169,7 +169,7 @@ Taken while reading the book.
   your desires. Act like a winner, and let the body produce serotonin.
 
 
-## Rule 2 / Treat yourself like someone you are responsible for helping
+### Rule 2 / Treat yourself like someone you are responsible for helping
 
 * How hard is it sometimes to convince your grandmother to go to a doctor, or
   take pills? Don’t be that person, help yourself and help others to help
@@ -185,7 +185,7 @@ Taken while reading the book.
 * *He whose life has a why can bear almost any how* Nietzsche
 
 
-## Rule 3 / Make friends with people who want the best for you
+### Rule 3 / Make friends with people who want the best for you
 
 * Avoid repetition compulsion (daughters of alcoholics often marry alcoholics).
 * Do not try to help people who don't want to be helped (woman falling for an
@@ -201,7 +201,7 @@ Taken while reading the book.
 * Make friends with people who want the best for you.
 
 
-## Rule 4 / Compare yourself to who you were yesterday
+### Rule 4 / Compare yourself to who you were yesterday
 
 * Not to who someone else is today (we're not equal in our abilities/outcomes).
 * It takes time to know yourself (how much pleasure do you need => negotiate
@@ -215,7 +215,7 @@ Taken while reading the book.
 * *Ask, and you shall receive; knock and the door will open*.
 
 
-## Rule 5 / Do not let your children do anything that makes you dislike them
+### Rule 5 / Do not let your children do anything that makes you dislike them
 
 * People usually grow up and get better over time.
 * Chimpanzees are willing to murder each other.
@@ -238,7 +238,7 @@ Taken while reading the book.
 * (Rule 2) use minimum necessary force.
 
 
-## Rule 6 / Set your house in perfect order before you criticize the world
+### Rule 6 / Set your house in perfect order before you criticize the world
 
 * --> Spark a candle instead of cursing the dark.
 * Life is hard, but you shouldn't blame the world; nihilism is not the solution.
@@ -246,7 +246,7 @@ Taken while reading the book.
 * Start noticing broken things, if they can be fixed, fix them.
 
 
-## Rule 7 / Purse what is meaningful (not what is expedient)
+### Rule 7 / Purse what is meaningful (not what is expedient)
 
 * The hacker way — focus on the most impactful things first
 * Sacrifice now to gain later
@@ -259,7 +259,7 @@ Taken while reading the book.
   (--> I know that I don't know).
 
 
-## Rule 8 / Tell the truth — or, at least don't lie
+### Rule 8 / Tell the truth — or, at least don't lie
 
 * Lies (even white) produce unintended consequences
     * we have a limited knowledge of the world, so lying may make sense in our
@@ -270,7 +270,7 @@ Taken while reading the book.
   brother's.
 
 
-## Rule 9 / Assume that the person you are listening to might know something you don't
+### Rule 9 / Assume that the person you are listening to might know something you don't
 
 * Listen, instead of giving advice. *Advice is what you get when the person you
   are talking to wants to revel in the superiority of his or her own
@@ -294,7 +294,7 @@ Taken while reading the book.
   for knowledge, which is the highest form of wisdom.*
 
 
-## Rule 10 / Be precise in your speech
+### Rule 10 / Be precise in your speech
 
 * We see tools and obstacles, not objects or things. In other words, we are
   focused on the outcomes, not on the objects themselves.
@@ -326,7 +326,7 @@ Taken while reading the book.
   making your life and mine miserable.  
 
 
-## Rule 11 / Do not bother children when they are skateboarding
+### Rule 11 / Do not bother children when they are skateboarding
 
 * We are hard-wired for living on the edge. What we know is boring, so we need
   to explore. But we can't go too far outside of what we know. So we have one
@@ -355,7 +355,7 @@ Taken while reading the book.
   > are confronting exactly what you would like them to do instead of what they
   > have done or currently are doing.
 
-## Rule 12 / Pet a cat when you encounter one on the street
+### Rule 12 / Pet a cat when you encounter one on the street
 
 > Tajfel’s studies demonstrated two things: first, that people are social;
 > second, that people are antisocial. People are social because they like the

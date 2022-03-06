@@ -13,7 +13,7 @@ aliases:
 
 In this post we will focus on cache invalidation.
 
-# Problem statement
+## Problem statement
 
 This blog is a static site hosted on S3 with CloudFront being used as a CDN /
 cache. [Blog post about this
@@ -45,7 +45,7 @@ Some more context:
     directory `<directory>/`
 
 
-# Solutions<a id="sec-2"></a>
+## Solutions<a id="sec-2"></a>
 
 There are two broad categories of solutions here &#x2014; (1) pull or (2) push.
 
@@ -63,7 +63,7 @@ rather than later. But then it sees no other updates for weeks.
 
 Because of that, we'll focus on the alternative.
 
-## Push
+### Push
 
 In case of a **push**, some external system (ideally, the S3 itself) should
 notify the cache about an update to its storage and let the cache expire
@@ -79,7 +79,7 @@ infrastructure. It updates S3 with the following command:
 This is how the output looks when we edit one of the posts:
 
 ```sh
-# /usr/local/bin/aws s3 sync --dryrun target s3://kupczynski.info --delete --size-only
+## /usr/local/bin/aws s3 sync --dryrun target s3://kupczynski.info --delete --size-only
 (dryrun) upload: target/2018/12/08/fire-and-motion.html to s3://kupczynski.info/2018/12/08/fire-and-motion.html
 (dryrun) upload: target/rss.xml to s3://kupczynski.info/rss.xml
 ```
@@ -93,7 +93,7 @@ of the files and issue a wildcard invalidation instead.
 
 However, I've looked for an excuse to play with AWS Lambda for quite some time, so let's take a look at that.
 
-## AWS Lambda to the rescue<a id="sec-2-2"></a>
+### AWS Lambda to the rescue<a id="sec-2-2"></a>
 
 You've probably heard the term *serverless* already. AWS Lambda allows you to
 define functions, and configure triggers for them to run. If you're new to
@@ -108,7 +108,7 @@ invalidations. The flow is depicted below.
 
 ![Overview of the cache invalidating lamda](/archive/2019-01-lambda-function-desc.jpg)
 
-### Code<a id="sec-2-2-1"></a>
+#### Code<a id="sec-2-2-1"></a>
 
 Here is our lambda:
 
@@ -155,7 +155,7 @@ We can make a few interesting points here:
 The code itself is small and simple. No need to start a server or an event loop,
 no external dependencies. This is really nice.
 
-### Plumbing<a id="sec-2-2-2"></a>
+#### Plumbing<a id="sec-2-2-2"></a>
 
 To make this lambda work, we need to configure some more AWS resources. If we
 use the Lambda IDE (built into AWS Management Console), then some of the
@@ -171,13 +171,13 @@ of lambda, and what AWS resources are required, but if you are curious, then
 GitHub](https://github.com/igor-kupczynski/terraform_static_aws_website/blob/master/invalidate_cache.tf)
 for a terraform spec of this function and all required resources.
 
-### Does it solve the problem?<a id="sec-2-2-3"></a>
+#### Does it solve the problem?<a id="sec-2-2-3"></a>
 
 Yes, we can set the default TTL for a large value (e.g. 60 days), and in case of
 any change to the site, we'll invalidate CloudFront cache only for the changed
 resource (and possibly it's parent folder for `index.html`).
 
-### Cost<a id="sec-2-2-4"></a>
+#### Cost<a id="sec-2-2-4"></a>
 
 I don't have a lot of data yet, as I've set the lambda only a few days back;
 this is more of a guess-work at this point.
@@ -205,7 +205,7 @@ We pay $0 for up to 1000 paths (which is not the same as 1000 objects, as
 can see this is the faster-growing component of the two, however with my current
 usage I expect it to be $0 most of the months.
 
-####  Keep the cost low
+##### Keep the cost low
 
 We do this exercise in the context of my personal blog. Latency is not critical
 and a cache miss is definitely acceptable. On the other hand, I want to keep the
@@ -228,7 +228,7 @@ Our lambda, however, operates in the context of a single object. Which means we
 can't group or aggregate by a common prefix. I wonder if there's an easy way to
 aggregate events, and operate only on aggregates.
 
-## Summary
+### Summary
 
 In the post we've specified a cache invalidation problem for an S3 hosted
 website cached behind CloudFront. We've shortly discussed *pull* vs *push*

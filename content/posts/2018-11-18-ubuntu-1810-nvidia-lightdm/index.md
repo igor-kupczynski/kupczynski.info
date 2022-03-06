@@ -17,7 +17,7 @@ After a upgrade from 18.04 my external monitor stopped working. Installing light
 **Update** 2019-11-15 on Ubuntu 19.10 I still need the lightdm to support multiple monitors.
 
 
-# Problem
+## Problem
 
 I've recently updated Ubuntu from 18.04 to 18.10 on work-issued Thinkpad p51.
 The laptop has **nvidia quatro m2200** graphics it also has a 4k display and I use
@@ -34,12 +34,12 @@ $ xrandr
 
 Screen 0: minimum 320 x 200, current 3840 x 2160, maximum 8192 x 8192
 eDP-1 connected primary 3840x2160+0+0 (normal left inverted right x axis y axis) 345mm x 194mm
-# (...) all of the available resolution goes here 
+## (...) all of the available resolution goes here 
 ```
 
 No mention of the other monitor, not even as disconnect.
 
-# Solution
+## Solution
 
 I've googled for the solution with a little luck, until I've found [this ask
 ubuntu answer](https://askubuntu.com/a/1049669/472560) suggesting to install
@@ -62,7 +62,7 @@ Steps:
 Contrary to the ask ubuntu answer, I need to stay with `lightdm`, reverting back
 to `gdm3` breaks the setup again.
 
-## But why does it work?
+### But why does it work?
 
 I've found [this
 post](https://devtalk.nvidia.com/default/topic/1042491/linux/optimus-and-ubuntu-18-10-new-packages-are-good-but-lightdm-is-required-gdm3-still-broken/)
