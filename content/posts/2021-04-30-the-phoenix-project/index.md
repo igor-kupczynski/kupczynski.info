@@ -18,25 +18,25 @@ The book presents a case for [DevOps](https://en.wikipedia.org/wiki/DevOps). It 
 Spoiler alert: Bill untangles this mess with a help of a mentor by applying manufacturing best practices, better understanding and cooperation with the business and with the development team.
 
 
-# Notes from the book
+## Notes from the book
 
-## 10 releases per day
+### 10 releases per day
 
 - Feature branches and long-lived projects are work in progress. Beware of them.
 - Even if you don't need 10 releases per day, you need the options it gives you. 10 releases/day requires a fully automated pipeline, which is a good thing as it reduces errors. It also allows for taking calculated risks (as you can rollback/rollforward the bug, turn off the feature flag, etc.).
 
-## Work in progress (WIP)
+### Work in progress (WIP)
 * A silent killer
 * Easy to see on the factory floor; harder in the IT
 * You accumulate capital in unfinished deliverables; it is tied in the system instead of paying dividends.
 * Repeated actions — waste, as the earlier actions are discarded
 
 
-## The theory of constrains
+### The theory of constrains
 
 💡The throughput of the system is equal to the throughput on the constraint. All other improvements make no difference!💡 This is maybe the most important takeaway of this book and _The Goal_.
 
-### Five focusing steps
+#### Five focusing steps
 1. Identify the constraint
 2. Exploit the constraint
 3. Subordinate everything else to the above decision
@@ -45,7 +45,7 @@ Spoiler alert: Bill untangles this mess with a help of a mentor by applying manu
 
 See also [The Slowest Hiker](/2019/02/23/slowest-hiker.html#five-focusing-steps) for more details on the steps.
 
-## Business and IT is a single org
+### Business and IT is a single org
 
 - You need to understand the business. E.g. there may be a team in finance that reconciles accounts with transactions weekly -- maybe you don't need these fancy software security controls.
 - Don't outsource critical components, the outsourcer may not be able to react to change fast enough.
@@ -56,7 +56,7 @@ See also [The Slowest Hiker](/2019/02/23/slowest-hiker.html#five-focusing-steps)
     - Don't throw dev deliverables over the wall to ops, work with them
     - Ops need to make it easy for the dev to use the right environments, build pipelines, etc.
 
-## The three ways:
+### The three ways:
 
 The goal is to maximize the flow of the value stream. Value is what you deliver to customers.
 
@@ -64,17 +64,17 @@ This is grounded in systems thinking and the theory of constraints. Value is not
 
 Example stream: `Business  -->  Dev  -->  Ops  -->  Customer`.
 
-### The first way: Find and implement a way to improve/maximize the flow from left to right.
+#### The first way: Find and implement a way to improve/maximize the flow from left to right.
 1. Limit WIP 
 2. Visualize the work
 2. Remove constraints
 
-### The second way: Increase the feedback loop from right to left.
+#### The second way: Increase the feedback loop from right to left.
 1. Failure signal
 2. Visualize the waiting time (when something waits on resource availability)
     1. Visualize the work which needs to go backward.
 
-### The third way: Continuous experimentation and learning, allowed by efficiency (the first way) and safety (the second way).
+#### The third way: Continuous experimentation and learning, allowed by efficiency (the first way) and safety (the second way).
 1. Learning from successes and failures
 2. Taking (calculated) risks
 3. Inject failure into the system to learn to deal with it and make it more resilient 

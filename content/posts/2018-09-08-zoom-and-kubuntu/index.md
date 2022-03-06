@@ -15,9 +15,9 @@ Here comes a first one.
 How to make [zoom](<https://zoom.us/>) &#x2014; the conferencing software
 &#x2014; play nicely with kubntu?
 
-# What's the issues?<a id="sec-1"></a>
+## What's the issues?<a id="sec-1"></a>
 
-## Super small fonts with Zoom and HiDPI display<a id="sec-1-1"></a>
+### Super small fonts with Zoom and HiDPI display<a id="sec-1-1"></a>
 
 Linux and HiDPI still have some way to go. In this case, the issue is that with
 my KDE configuration (scaling = 2.0), zoom is so small, that it is unreadable.
@@ -30,8 +30,8 @@ To make it convenient in ubuntu, I've added it to the zoom launcher:
 
 ```sh
 $ sudo $EDITOR /usr/share/applications/Zoom.desktop
-# Change `Exec` to something like
-# Exec=/usr/bin/env QT_SCALE_FACTOR=2 /usr/bin/zoom %U
+## Change `Exec` to something like
+## Exec=/usr/bin/env QT_SCALE_FACTOR=2 /usr/bin/zoom %U
 ```
 
 Before:
@@ -40,7 +40,7 @@ Before:
 After:
 ![After - zoom is OK](/archive/2018-09-zoom-large.png)
 
-## KDE / Kubuntu doesn't handle zoom meeting links<a id="sec-1-2"></a>
+### KDE / Kubuntu doesn't handle zoom meeting links<a id="sec-1-2"></a>
 
 Zoom uses its own [url
 scheme](https://developer.zoom.us/article/zoom-url-schemes/), e.g. open

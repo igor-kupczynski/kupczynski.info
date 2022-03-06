@@ -35,7 +35,7 @@ That's an application of the [*Theory of
 constraints*](https://en.wikipedia.org/wiki/Theory_of_constraints).
 
 
-# How to optimize any process?
+## How to optimize any process?
 
 1. Find out what the goal is.
 2. Find out your constraints (aka blockers, or bottlenecks, or slowest hikers).
@@ -53,7 +53,7 @@ Team Sky, but then competitive cycling is already a heavily optimized process;
 marginal gains maybe all that is left there.
 
 
-## The slowest hiker
+### The slowest hiker
 
 Theory of constraints was introduced in [*The
 Goal*](https://en.wikipedia.org/wiki/The_Goal_(novel)). The book offers a story
@@ -69,7 +69,7 @@ his load among the group. This speeds him up and the group makes it on time. The
 book is from 1984 in the modern, cut-throat world of Jeff Bezoses, Herbie would
 likely be fired ;)
 
-### Five focusing steps
+#### Five focusing steps
 
 The book actually identifies these _five focusing steps_:
 
@@ -85,7 +85,7 @@ The book actually identifies these _five focusing steps_:
 5. Repeat. Go back to step 1 to hunt for new constraints
 
 
-## What's the most important thing to do right now?
+### What's the most important thing to do right now?
 
 Try to think and question the assumptions to understand what the constraint is,
 and how it can be eliminated. Ask *why?* until you find the root cause.
@@ -98,7 +98,7 @@ obstacles are eliminated), in order to say "yes" to the most important problem
 at a given time.
 
 
-# Go's success
+## Go's success
 
 Theory of constraints may in part explain Go success. The team focused on
 addressing [common software engineering challenges

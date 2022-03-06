@@ -42,7 +42,7 @@ Without further ado, my notes from the session. Hope they are useful.
     *Don't accept the candidates you don't believe are a good match for the job opening. Push the recruiters to find better candidates. This is their job, and they are as passionate about challenging projects as engineers are.*
 
 
-### Diversity 
+### Diversity
 
 - Job ads and funnel analysis.
 
@@ -56,7 +56,7 @@ Without further ado, my notes from the session. Hope they are useful.
 *Elastic is a distributed company and puts a lot of emphasis on inclusion and diversity. See our source code --- [As YOU, Are](https://www.elastic.co/about/our-source-code#as-you-are). In this part of the session, Kevin gave some metrics and a quick overview of the tasks that we as a company do to increase the diversity of the team. I personally feel this subject is really close to the heart of our HR team and especially to [Leah Sutton](https://www.linkedin.com/in/leahsutton/), VP Global HR at Elastic. She is always very passionate about it, and I see various efforts the HR undertakes to improve the diversity of the team.*
 
 
-### Growth and development 
+### Growth and development
 
 - Give an opportunity to do some ${level}+1 work. Sometimes this may not work out. And that’s OK. Give an opportunity to roll back.
 
@@ -104,7 +104,7 @@ Without further ado, my notes from the session. Hope they are useful.
 *I can assure you this is not just a marketing BS. At least not from my perspective. I've seen that happen in Elastic. My colleagues and the HR and the management in Elastic try their best to care for their fellow Elasticians. I'm really happy to be a part of this.*
 
 
-### Empowerment 
+### Empowerment
 
 - Make sure the decisions are well understood.
 

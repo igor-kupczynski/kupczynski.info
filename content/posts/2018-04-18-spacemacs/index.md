@@ -14,7 +14,7 @@ Three weeks ago, I've ditched most of my emacs config and installed
 modal editing instead of emacs key chords. I could've tried vim of course, but
 I'm already invested in emacs and feel at home there.
 
-# Evil-mode<a id="sec-1"></a>
+## Evil-mode<a id="sec-1"></a>
 
 Luckily, there is a brilliant vim emulation in emacs, called [evil
 mode](https://github.com/emacs-evil/evil). I didn't want to spend too much time
@@ -31,7 +31,7 @@ just <3 magit) then spacecmacs is worth giving a shot.
 another evil-preconfigured distribution which gets a lot of good feedback
 recently*.
 
-# Zen of Vim<a id="sec-2"></a>
+## Zen of Vim<a id="sec-2"></a>
 
 The only problem is that I just don't know vim :) Of course, I can change a
 config option on a remote server or scroll through a config file. But my vim
@@ -44,7 +44,7 @@ This motivated me to go through the first series of wonderful vim screencast by
 Derek Wyatt. My notes form the videos are below in case I've ever need to
 reference them.
 
-# How do I like it so far?<a id="sec-3"></a>
+## How do I like it so far?<a id="sec-3"></a>
 
 Well, the modal editing is quite a change. I think that after three weeks I'm
 still a bit less efficient. Actually, the navigation in *normal* mode feels
@@ -62,9 +62,9 @@ What've started as an experiment, to see if there is a better way may become may
 permanent mode of operation. Stay tuned.
 
 
-# Learning to vi
+## Learning to vi
 
-## Favorites
+### Favorites
 
 Some of my favorite vi / spacemacs tricks
 
@@ -78,11 +78,11 @@ Some of my favorite vi / spacemacs tricks
   multicursor way.
 - **`.`** --- repeat last editing command.
 
-## Vim Videos by Derek Wyatt<a id="sec-4"></a> ##
+### Vim Videos by Derek Wyatt<a id="sec-4"></a>
 
 <http://derekwyatt.org/vim/tutorials/>
 
-### [BASIC Movement (Screencast 1)](https://vimeo.com/6170479)<a id="sec-4-1"></a> ###
+#### [BASIC Movement (Screencast 1)](https://vimeo.com/6170479)<a id="sec-4-1"></a>
 
 | Key          | Description                                                           |
 |--------------|-----------------------------------------------------------------------|
@@ -103,7 +103,7 @@ Some of my favorite vi / spacemacs tricks
 -   **`WORD`:** up to next space
 -   **`count<operator>`:** the movement commands can take count before them
 
-### [BASIC Movement (Screencast 2)](https://vimeo.com/6185584)<a id="sec-4-2"></a> ###
+#### [BASIC Movement (Screencast 2)](https://vimeo.com/6185584)<a id="sec-4-2"></a>
 
 | Key                | Description                                                  |
 |--------------------|--------------------------------------------------------------|
@@ -116,7 +116,7 @@ Some of my favorite vi / spacemacs tricks
 | `/<term>  ?<term>` | search for <term> forward / backwards                        |
 | `zz`               | center on screen                                             |
 
-### [Basic Movement (Screencast 3)](http://vimeo.com/6216655)<a id="sec-4-3"></a> ###
+#### [Basic Movement (Screencast 3)](http://vimeo.com/6216655)<a id="sec-4-3"></a>
 
 | Key      | Description                            |
 |-------- |-------------------------------------- |
@@ -129,7 +129,7 @@ Some of my favorite vi / spacemacs tricks
 | `\<char>` | jump to line and column of mark <char> |
 | `''`      | jump to previous location              |
 
-### [Basic Editing (Screencast 1)](https://vimeo.com/6329762)<a id="sec-4-4"></a> ###
+#### [Basic Editing (Screencast 1)](https://vimeo.com/6329762)<a id="sec-4-4"></a>
 
 | Key       | Description                                                     |
 |--------- |--------------------------------------------------------------- |
@@ -147,7 +147,7 @@ Some of my favorite vi / spacemacs tricks
 | `s`       | substitute (replace a character and put you into insert mode)   |
 | `S`       | change whole line                                               |
 
-### [Basic Editing (Screencast 2)](http://vimeo.com/6332848)<a id="sec-4-5"></a> ###
+#### [Basic Editing (Screencast 2)](http://vimeo.com/6332848)<a id="sec-4-5"></a>
 
 | Key       | Description                                              |
 |--------- |-------------------------------------------------------- |
@@ -160,7 +160,7 @@ Some of my favorite vi / spacemacs tricks
 | `C-v`     | visual block (then `I` to insert at the beginning, etc.) |
 | `gv`      | re-do last visual selection                              |
 
-### Working with many files<a id="sec-4-6"></a> ###
+#### Working with many files<a id="sec-4-6"></a>
 
 *A bit less useful from spacemacs perspective, but surprisingly most of the keys
 still work; I've aggregated the screencasts here*
@@ -190,7 +190,7 @@ still work; I've aggregated the screencasts here*
 
 
 
-## Why, oh WHY, do those #?@! nutheads use vi?
+### Why, oh WHY, do those #?@! nutheads use vi?
 
 Another zen-of-vim style [article](http://www.viemu.com/a-why-vi-vim.html).
 
@@ -220,7 +220,7 @@ Another zen-of-vim style [article](http://www.viemu.com/a-why-vi-vim.html).
 
 * **`]p`** --- paste and auto intend.
 
-# Spacemacs
+## Spacemacs
 
 | Key         | Description                |
 |-------------|----------------------------|
@@ -233,7 +233,7 @@ Another zen-of-vim style [article](http://www.viemu.com/a-why-vi-vim.html).
 | `SPC TAB`   | cycle between open buffers |
 | `SPC SPC`   | M-x                        |
 
-## Org mode
+### Org mode
 
 | Key         | Description                          |
 |-------------|--------------------------------------|
@@ -248,7 +248,7 @@ Another zen-of-vim style [article](http://www.viemu.com/a-why-vi-vim.html).
 | `, R`       | refile an archived item              |
 
 
-# Doom emacs
+## Doom emacs
 
 | Key         | Description                         |
 |-------------|-------------------------------------|

@@ -11,11 +11,11 @@ I've read [*Zero to One: Notes on Startups, or How to Build the Future*](https:/
 
 
 
-# Background
+## Background
 
 Peter Thiel is a well known Silicon Valley founder and investor. He is often portrait as a contrarian and is quite a controversial figure. He is a founder of PayPal and Plantir. I've heard very good reviews of the book and it was on my list for quite some time.
 
-# Main points
+## Main points
 
 **Startup thinking.**
 
@@ -65,7 +65,7 @@ The questions every business must have an answer for:
 7. The secret question => *Have you identified a unique opportunity that others don't see?*
 
 
-# My comment
+## My comment
 
 I really enjoyed the book. I've found a lot of the ideas appealing.
 
@@ -86,21 +86,21 @@ Other books that may correspond with *Zero to One*:
 - Insanely Simple by Ken Segall,
 - (to some extent) Essentialism by Greg McKeown.
 
-# Raw notes
+## Raw notes
 
-## Startups
+### Startups
 
 
-### *What important truth do very few people agree with you on?*
+#### *What important truth do very few people agree with you on?*
 - Or, *What valuable company is nobody building?*
 
 
-### 0 to 1 vs 1 to N
+#### 0 to 1 vs 1 to N
 - Horizontal vs vertical scaling.
 - 0 to 1 is the vertical progress, it's doing new things.
 - 1 to N is scaling, copying / improving things that work.
 
-### Capitalism and competition
+#### Capitalism and competition
 - Under perfect competition no company can make profits.
 - Under perfect monopoly company produces at price and quantity to max its
   profits.
@@ -113,7 +113,7 @@ Other books that may correspond with *Zero to One*:
 - Competitions and wars are costly, and can threaten both parties.
 
 
-### Startup thinking
+#### Startup thinking
 - Small groups of smart people (see *Insanely Simple*) tend to produce new tech
   / original work.
 - Principles:
@@ -123,7 +123,7 @@ Other books that may correspond with *Zero to One*:
   - Sales matters just as much as the product.
 
 
-### What drives company valuations?
+#### What drives company valuations?
 
 It's not current earning (looks like P/E is useless, as it provides a rear view
 mirror image of a company). What matters are discounted future revenues, i.e. the
@@ -135,9 +135,9 @@ The company must grow and endure. The latter, durability, is hard to measure.
 E.g. Groupon or Zynga. *Will the business be still around a decade from now?*
 
 
-## Monopolies
+### Monopolies
 
-### Characteristics
+#### Characteristics
 
 1. Proprietary technology:
    - As a rule of thumb should be 10x better than competition, otherwise don't bother.
@@ -145,14 +145,14 @@ E.g. Groupon or Zynga. *Will the business be still around a decade from now?*
 3. Economies of scale.
 4. Branding.
 
-### How to build it?
+#### How to build it?
 1. Start small, capture a niche first and monopolize it.
 2. Scale up — expand from the niche into new markets.
 3. Don't disrupt — focus on creation, not on the fights.
 4. *Last mover advantage* — moving first make it easy to capture the market, but it's better to have the last great development on the market, unseat current contenders and enjoy monopoly. Arguably this point is not super clear to me. 
 
 
-## Controlling the future
+### Controlling the future
 
 Is success accidental? E.g. Gates, or Buffet, or Bezos claim there was some luck involved in their success. There are serial entrepreneurs like Musk, or Jobs. Thiel seems to think that success is not accidental, but OTOH is it different than mutual fund management (all of the fund managers suck, some seems successful, but given there are so many of them some will be successful many years in a row just by chance)?
 
@@ -172,7 +172,7 @@ Here I think the book resonates nicely with *Essentialism*, though I'm not sure 
 
 Our word is indefinite. The next points really resonate with me.
 
-### Indefinite finance
+#### Indefinite finance
 
 - Nobody knows how to create wealth.
 
@@ -185,18 +185,18 @@ Our word is indefinite. The next points really resonate with me.
 - At no point (except the companies) anyone knows what to do with the money. Money is an end, not a means to it.
 
 
-### Indefinite politics
+#### Indefinite politics
 
 - Near real time polling allows politicians to know what the general public think now, instead of offering a plan or a vision for the next 10–20 years.
 
 - Government doesn't work on big problems anymore, it merely provides insurance. According to the author the entitlement spending in the US eclipsed discretionary spending around 1975 (according to wikipedia in the 1990s https://en.wikipedia.org/wiki/Discretionary_spending).
 
-### Indefinite philosophy
+#### Indefinite philosophy
 
 - Ancient philosophers where mostly pessimistic, but that changed later on. XIX is optimistic with Hegel or Marx. They also believe in planned progress, so they are definite, In XX it shifted to indefinite optimism.
 - We focus on the differences between left liberal egalitarianism and libertarian philosophizes, but we don't see the are all indefinite.
 
-### Indefinite life
+#### Indefinite life
 
 Finally the points above lead to indefinite life.
 
@@ -204,7 +204,7 @@ Finally the points above lead to indefinite life.
 - Number of new drugs approved per billion $ in R&D has halved every nine years since 1950 )biotech has basically has a Moor's law, but in reverse).
 - Biotech startups are different from software startups. They experiment blindly instead of forming a theory, they require a lot of capital, they rely on external advisors instead of a dedicated team.
 
-### Evolution vs Design
+#### Evolution vs Design
 
 - Indefinite optimism is an evolutionary process. You don't plan, but hope that things will be better. *Live tends to progress without anybody intending it* (Darwin).
 - Is it the best way forward? Peter Thiel prefers planning and building the future you want.
@@ -214,7 +214,7 @@ Finally the points above lead to indefinite life.
 
 Startup is the largest endeavor over which you have an agency over. Reject the tyranny of chance. **You are not a lottery ticket.**
 
-## Follow the money
+### Follow the money
 
 - Compound interest, *whoever has will be given more*.
 - We live under the **power law**. People (even VCs who make money out of it) often fail to see it, as the outcomes are far away and removed from daily experience.
@@ -227,7 +227,7 @@ Startup is the largest endeavor over which you have an agency over. Reject the t
   - Put your time and decision making skills into important things.
   - Think where your actions fall on the curve.
 
-## Secrets
+### Secrets
 
 - Things:
   - Conventions: obvious, easy.
@@ -244,7 +244,7 @@ Startup is the largest endeavor over which you have an agency over. Reject the t
 - What do do with them?
   - Form a ~conspiracy~ startup.
 
-## Foundations
+### Foundations
 
 - Foundation of a company is a special moment and it has to be done right.
 - Founders need to work together well.
@@ -263,7 +263,7 @@ Startup is the largest endeavor over which you have an agency over. Reject the t
   - Beware of consultants who want short term cash and no equity.
 
 
-## The Mechanics of Mafia
+### The Mechanics of Mafia
 
 - Every company is a culture, there's no way to create a culture — perks without the substance are useless.
 - Team needs to be tightly-knit, not transactional. Time is precious, don't waste it on people you don't want to spend your future with.
@@ -273,7 +273,7 @@ Startup is the largest endeavor over which you have an agency over. Reject the t
 - Let a person do one thing. This avoids conflicts, makes responsibilities obvious.
 - Don't hire consultants. Hire cult followers.
 
-## If You Build It, Will They Come?
+### If You Build It, Will They Come?
 
 - Sales look easy, but it takes hard work to make it look easy.
 - Salesmanship works best when hidden. Politicians sell themselves, investment bankers sell companies, account execs sell ads.
@@ -304,24 +304,24 @@ Startup is the largest endeavor over which you have an agency over. Reject the t
 Everybody has a product to sell.
 
 
-## Man and Machine
+### Man and Machine
 
 - You should think about machines as complementary.
 - Computers complementing human bring great companies (Palantir, Linkedin for recruiters, etc.).
 - Strong AI may bring doom, but it's a worry for 22nd century.
 
 
-## Seeing Green
+### Seeing Green
 
 
-## The Founder's Paradox
+### The Founder's Paradox
 
 - A lot of founders have contradicting traits (they are both rich and poor, loved and hated, idiot and genius, insider and outsider). The traits can be natural, or acquired, or maybe even just a cultivated image.
 - Celebrities are founders of their personal brand.
 - King and scapegoat dichotomy.
 - Founders are important because they can bring the best work of their team.
 
-## Stagnation or Singularity?
+### Stagnation or Singularity?
 
 For patterns for humanity:
 

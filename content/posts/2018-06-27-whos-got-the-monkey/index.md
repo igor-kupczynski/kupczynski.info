@@ -18,14 +18,10 @@ recommend it to you, my reader :)
 
 Here are my notes if you want to skim the article quickly.
 
-<a id="org796cb29"></a>
-
-# Management Time: Who’s Got the Monkey?
+## Management Time: Who’s Got the Monkey?
 
 
-<a id="org3dda85e"></a>
-
-## Source
+### Source
 
 <https://hbr.org/1999/11/management-time-whos-got-the-monkey>
 
@@ -40,7 +36,7 @@ Here are my notes if you want to skim the article quickly.
 
 
 
-## Your time
+### Your time
 
 What are the components of your time?
 
@@ -56,7 +52,7 @@ Goal:
 -   3 tends to take more time than people imagine.
 
 
-## Examples
+### Examples
 
 -   Scene #1
     -   A colleague says "Hi, BTW we've got a problem. You see &#x2026;"
@@ -79,7 +75,7 @@ Now the ball is in your court, you're blocking your colleague plus you have more
 
 <a id="org2fad056"></a>
 
-### What's the deal with the monkey then?
+#### What's the deal with the monkey then?
 
 Monkey is the problem:
 
@@ -94,7 +90,7 @@ Monkey is the problem:
 
 <a id="org1db6a50"></a>
 
-### Who's the boss?
+#### Who's the boss?
 
 -   Is the person with the problem your colleague or your subordinate? Of course not, you've voluntarily become their subordinate.
     -   They'll supervise you ("How's it coming?"),
@@ -109,7 +105,7 @@ Monkey is the problem:
 
 <a id="orgaf85d19"></a>
 
-## Solution
+### Solution
 
 -   Get rid of colleague impose time, you'll get equal amount of discretionary time.
 -   Use some of this discretionary time to work with your colleagues:
@@ -121,7 +117,7 @@ Monkey is the problem:
 
 <a id="org267d146"></a>
 
-### Get rid of a monkey
+#### Get rid of a monkey
 
 -   Put the monkey on the desk between you and your colleague
 -   Both of you should figure out how the next move may be your colleagues
@@ -131,14 +127,14 @@ Monkey is the problem:
 
 <a id="orgf72b83b"></a>
 
-## Initiative
+### Initiative
 
 The real goal here is to transfer the initiative to your colleagues.
 
 
 <a id="org643854c"></a>
 
-### Five degrees of initiative:
+#### Five degrees of initiative:
 
 1.  Wait until told.
 2.  Ask what to do.
@@ -149,7 +145,7 @@ The real goal here is to transfer the initiative to your colleagues.
 
 <a id="org38e028e"></a>
 
-### Rules of engagement:
+#### Rules of engagement:
 
 1.  Monkey needs be fed or shoot => decide immediately if we want to do something with the problem (even if at a later date) or not.
 2.  Keep the monkey population below the breaking point => kanban style, put a limit on WIP items.
@@ -162,7 +158,7 @@ The real goal here is to transfer the initiative to your colleagues.
 
 <a id="orgf114d45"></a>
 
-## Summary
+### Summary
 
 -   Get rid of colleague-imposed time.
 -   Use part of the saved time to see if your colleagues have the initiative and apply it.

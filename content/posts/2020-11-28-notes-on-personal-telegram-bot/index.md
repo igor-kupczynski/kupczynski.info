@@ -30,17 +30,17 @@ I've created a telegram bot to give me a daily updates to a webpage I was tracki
     - [Evaluate FaaS as an alternative](#evaluate-faas-as-an-alternative)
 - [Summary](#summary)
 
-# The problem
+## The problem
 
 I want to be notified about new real estate ads from my neighborhood.
 
-## Context
+### Context
 
 - There's a popular real estate ads portal I currently check every now and then to get the "feel" of the market I'm interested in. I want to _outsource_ the checking to a bot and be notified about new ads.
 - This is for curiosity and to track price trends. I don't need to know about every new ad. I'm interested only in ads matching certain criteria. I don't need to be notified right away — once a day, maybe even once a week is OK.
 - This is a hobby project, hosting price, educational value, and developer happiness are important and legitimate concerns for the solution 😀
 
-# The solution
+## The solution
 
 1. **Write a telegram bot to scrape the ads portal and send notifications about new ads matching the given criteria.**
 
@@ -66,16 +66,16 @@ I want to be notified about new real estate ads from my neighborhood.
      - They have a [generous free tier][gcpfreetier] and I expect my use case to fit into the limits and cost me $0 / month (or close to it).
 
 
-## Why not open-source the code?
+### Why not open-source the code?
 
 Because of the website I'm scraping. The laws on the subject are complex, scraping for personal purposes is different than showing the public how to do it. I don't want to go through the hassle of figuring it out in the major jurisdictions. I could take out the scraping part and open-source the rest, but for now, I'm not willing to put more personal time into the project.
 
 I hope you'll find the notes useful regardless!
 
 
-# Notes on the project
+## Notes on the project
 
-## Telegram bot API is really good for experimentation
+### Telegram bot API is really good for experimentation
 
 The docs are really good and easy to work with. There's no tutorial, so I recommend to use VS code + [REST client extension](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) to experiment. This is useful later on when you try to debug or understand the API a bit better. The REST client gives us a nice, interactive, almost REPL like dev-experience.
 
@@ -90,20 +90,20 @@ The docs are really good and easy to work with. There's no tutorial, so I recomm
 @root = https://api.telegram.org/bot{{token}}
 
 
-### Info
+#### Info
 GET {{root}}/getMe
 
 
-### Get new messages sent to the bot
+#### Get new messages sent to the bot
 GET {{root}}/getUpdates
 
 
-### Respond back to a chat
+#### Respond back to a chat
 @chat_id = numeric-chat-id
 POST {{root}}/sendMessage?chat_id={{chat_id}}&text=Hello
 
 
-### Check webhook status
+#### Check webhook status
 GET {{root}}/getWebhookInfo
 ```
 {% endraw %}
@@ -111,15 +111,15 @@ GET {{root}}/getWebhookInfo
 ![VS code REST client session example](/archive/2020-11-telegram-bot-api-experiments.png)
 
 
-### Anyone can chat to your bot
+#### Anyone can chat to your bot
 
 You may want some form of authentication before allowing telegram users to use all the bot features. In my case, I ask for a user token in order for the bot to notify you about new ads.
 
-## Google App Engine
+### Google App Engine
 
 I've really enjoyed working with the platform. There's a learning curve, but there's not a lot of complexity if you think about it as a docker container runner :)
 
-### Secrets are hard to manage
+#### Secrets are hard to manage
 
 As a responsible [twelve-factor app](https://12factor.net/config) citizen you want to provide the config, including secrets, via environment variables. On GAE you put them in `app.yaml` file. The problem is that you can't keep the file plaintext in your repo — everyone with access to the code will be able to access the secrets as well.
 
@@ -135,11 +135,11 @@ The alternative is to use something like [gitcrypt](https://www.agwa.name/projec
 
 Remember, we talk about a personal time hobby project, not an _enterprise_ deployment where secret management is likely a solved problem.
 
-### If you don't know GAE start with the _concepts_
+#### If you don't know GAE start with the _concepts_
 
 See https://cloud.google.com/appengine/docs/standard/go/concepts, especially the _How Instances are Managed_ section.
 
-### Run it for cheap :)
+#### Run it for cheap :)
 
 **Note** when I comment on pricing in this article it is based on my understanding of the GCP price model. Cloud pricing models are notoriously complex — do your own research, utilize the GCP trial to figure out the costs of your project. Don't blindly follow the advice of some random-person-on-the-internet.
 
@@ -158,14 +158,14 @@ automatic_scaling:
   max_instances: 1
 ```
 
-### Old versions of the app may be still running
+#### Old versions of the app may be still running
 
 When you do `gcloud app deploy` GCP build and deploys new version of your app. The problem is that the old versions may be still running. Unless you do traffic splitting they probably get 0 traffic, but they may serve existing connections, or they may do some operations in the background. Keep that in mind, delete the old versions when you don't need them (and avoid async operations, GAE is not designed for that, see [_Go concurrency patterns are not that useful_](#go-concurrency-patterns-are-not-that-useful) section).
 
 ![Old versions still running](/archive/2020-11-gae-old-versions-still-running.png)
 
 
-### The app is not guaranteed to scale up from 0 to 1 after deployment
+#### The app is not guaranteed to scale up from 0 to 1 after deployment
 
 - Watch out for any init actions — your app may not be started until it gets the first request.
 - If there are 0 instances pre-deployment, google may keep it a 0 post-deployment.
@@ -176,7 +176,7 @@ When you do `gcloud app deploy` GCP build and deploys new version of your app. T
 ![No instances running](/archive/2020-11-0-instances-runnning.png)
 
 
-### Don't forget to clean up the lingering images!
+#### Don't forget to clean up the lingering images!
 
 [[docs]](https://cloud.google.com/appengine/docs/standard/go/testing-and-deploying-your-app)
 
@@ -184,7 +184,7 @@ When you do `gcloud app deploy` GCP build and deploys new version of your app. T
 
 The images are stored in a Google Cloud Storage bucket. Actually, I've noticed that GCP created two new buckets, one of them had a 15d lifecycle policy attached, but the other not.
 
-### The built-in observability tools are really good (at least for a personal project)
+#### The built-in observability tools are really good (at least for a personal project)
 
 - Logs: there's a generous 50GB / project free tier for logs as long as you stay within the default retention period (30 days). See [[pricing]](https://cloud.google.com/stackdriver/pricing).
 
@@ -203,9 +203,9 @@ The images are stored in a Google Cloud Storage bucket. Actually, I've noticed t
 
   ![Debugger no game](/archive/2020-11-debugger.png)
 
-## Structuring the app
+### Structuring the app
 
-### Go concurrency patterns are not that useful
+#### Go concurrency patterns are not that useful
 
 Due to autoscaling our app may be scaled-down anytime when it is not servicing requests. This means that we can't rely on goroutines (and channels) to complete operations in the background.
 
@@ -220,7 +220,7 @@ GCP provides us with primitives to compensate the lack of async processing. We c
 - **Cron jobs** allow us to run a request on a specific schedule.
 
 
-### Protecting the internal endpoints
+#### Protecting the internal endpoints
 
 If we use _task queues_ and _cron jobs_ we end up with a few "internal" endpoints. We may not want to let them be called externally.
 
@@ -232,7 +232,7 @@ There's an easy way to only allow internal traffic from tasks or jobs:
 GAE guarantees that such headers will be deleted from external requests. The list of the headers removed/overwrote by GCP is [[here](https://cloud.google.com/appengine/docs/standard/go/reference/request-response-headers#removed_headers)].
 
 
-### Use firestore to store the state of the app
+#### Use firestore to store the state of the app
 
 If there's a state you want to preserve between restarts of your app (e.g. a list of telegram chats to send the new ads to, a list of already processed ads) you need a database. The disk is out of the question because you don't get persistent storage in GAE. Firestore is the only DB available in the GCP free tier.
 
@@ -248,14 +248,14 @@ Firestore offers an emulator which you can use locally for integration tests:
 
 
 
-### Evaluate FaaS as an alternative
+#### Evaluate FaaS as an alternative
 
 If you outsource the state to the database (you have to because the app may be scaled down to 0 nodes), use queues/cron (the app may be scaled down to 0), avoid initialization code (the app is not guaranteed to run after the deployment) then your app becomes a collection of HTTP request handlers interacting with the DB.
 
 At this point, you may consider using a Function-as-a-Service platform (e.g. GCP Cloud Functions, AWS Lambda).
 
 
-# Summary
+## Summary
 
 A telegram bot is an excellent option as the UI facade for your personal project. You can run it for cheap in Google App Engine. After the initial learning curve, the platform is pleasant to work with and requires little maintenance. I hope this post will give you an idea of the challenges involved in developing for GAE.
 

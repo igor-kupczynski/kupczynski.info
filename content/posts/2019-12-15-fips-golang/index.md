@@ -8,7 +8,7 @@ aliases:
 
 If you work with US government entities or corporations in regulated markets the subject of FIPS compliance may come up. [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) is a set of cryptographic standards that your application may need to adhere to.
 
-# FIPS in go
+## FIPS in go
 
 It takes  a lot to be FIPS verified or FIPS compliant ([learn more](https://blog.ipswitch.com/fips-validated-vs-fips-compliant)), but for us the bottom line is that our app must use FIPS verified crypto libraries. This is a challenge with go, where the native crypto is not FIPS friendly.
 
@@ -24,7 +24,7 @@ Reimplementing crypto with cgo call outs doesn't seem like a fun activity. Are w
 Let's discuss them.
 
 
-# Boring gets interesting
+## Boring gets interesting
 
 > BoringSSL is a fork of OpenSSL that is designed to meet Google's needs.
 
@@ -44,7 +44,7 @@ This sounds good, but in an OSS fashion there are no guarantees:
 
 The patches are kept up-to-date against minor version releases and master. [List of branches](https://github.com/golang/go/branches/all?query=dev.boringcrypto).
 
-## Build process
+### Build process
 
 Google maintains [docker images with patched go toolchain](https://github.com/golang/go/blob/dev.boringcrypto.go1.12/misc/boring/README.md), similar to `golang:x.y.z`.
 
@@ -69,11 +69,11 @@ Google maintains [docker images with patched go toolchain](https://github.com/go
 > To check whether a given binary is using BoringCrypto, run `go tool nm`
 > on it and check that it has symbols named `*_Cfunc__goboringcrypto_*`.
 
-## Code changes
+### Code changes
 
 The patched toolchain is a true drop-in replacement, no changes to the code are needed (maybe with an exception of filtering out unsupported ciphers, etc. but this is a configuration concern).
 
-## Performance impact
+### Performance impact
 
 The foreign function interface between golang and c is not free. The library performs worse than the build-in crypto. See [golang/go#21525](https://github.com/elastic/cloud/pull/golang/go#21525).
 
@@ -86,7 +86,7 @@ The foreign function interface between golang and c is not free. The library per
 
 Note that the benchmarks were done in 2017, so the things might've improved (but then vanilla tls/crypto improved as well). Also note the detailed benchmark results, not all ciphers performed as poorly as the highlight. Some where on the same level or faster. If you don't care about every nanosecond of performance or your code is not on the critical path then this is good enough. Otherwise benchmark your usecase to see if the performance hit is acceptable.
 
-## Boring Example
+### Boring Example
 
 I've created a [simple echo server in go](https://github.com/igor-kupczynski/fips-echo-server/tree/boringcrypto) to show what changes are needed to switch to the `dev.boringcrypto`. Check the diff between the "regular" (or "native") crypto and the boring version: <https://github.com/igor-kupczynski/fips-echo-server/compare/master...boringcrypto>:
 
@@ -118,7 +118,7 @@ I've created a [simple echo server in go](https://github.com/igor-kupczynski/fip
 ...
 ```
 
-# RedHat go toolchain
+## RedHat go toolchain
 
 [RedHat offers an alternative](https://developers.redhat.com/blog/2019/06/24/go-and-fips-140-2-on-red-hat-enterprise-linux/).
 
@@ -136,6 +136,6 @@ The major differences seem to be:
 3. Older go version — 1.11 at the time of writing, they promise to upgrade to 1.12 in 2019. `dev.boringcrypto` is being kept up-to-date against master (but there are no guarantees it will be like that in the future).
 
 
-# Summary
+## Summary
 
 The native go crypto is not FIPS compliant, nor it will be in a foreseeable future. Luckily, both Google and RedHat provide go toolchains backed by FIPS validated SSL libraries. We can leverage them to make our go app FIPS compliant.

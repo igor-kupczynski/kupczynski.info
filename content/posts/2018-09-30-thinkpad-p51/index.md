@@ -39,14 +39,14 @@ to do it again.
 - [Conclusion](#sec-3)
 
 
-# Out of the box experience<a id="sec-1"></a>
+## Out of the box experience<a id="sec-1"></a>
 
 The out of the box experience is surprisingly good. P51 is about 1 year old, so
 18.04 kernel (4.15) contains everything it needs. Basically, after the
 installation I've needed only to install nvidia drivers and change display
 scaling (4k screen). Second display (also 4k) works, sleep works, etc.
 
-## What doesn’t work?<a id="sec-1-1"></a>
+### What doesn’t work?<a id="sec-1-1"></a>
 
 -   Different scaling on different displays. The laptop is 4k and the external
     monitor I use it with is also 4k. But one of them is 15'' and the other
@@ -76,7 +76,7 @@ scaling (4k screen). Second display (also 4k) works, sleep works, etc.
 
 -   Fingerprint sensor, but hey, not like this is unexpected.
 
-## Battery life<a id="sec-1-2"></a>
+### Battery life<a id="sec-1-2"></a>
 
 I get around 3h of regular work (compilations & build, IDE, spotify, external
 display, mails, slack, I have it all). It is a far cry from MBP, but acceptable.
@@ -84,16 +84,16 @@ I plan to experiment with TLP to see if I'll get more out of it. Also, I've
 haven't got a chance to test it without IDE + sbt combo; hope it'll be a bit
 better in reading / surfing mode. I'm using the discrete nvidia card.
 
-## KDE vs Gnome<a id="sec-1-3"></a>
+### KDE vs Gnome<a id="sec-1-3"></a>
 
 I've played a bit with kubuntu and ubuntu live cds and decided to go with KDE.
 But after a few days I've installed `ubuntu-desktop` and stick with it. I like
 KDE more, but the number of configuration options and perceived stability made
 me switch to gnome for now.
 
-# Setup<a id="sec-2"></a>
+## Setup<a id="sec-2"></a>
 
-## Windows<a id="sec-2-1"></a>
+### Windows<a id="sec-2-1"></a>
 
 -   Update BIOS, firmware, etc.
 -   Go to BIOS and setup hard disk password (this is really neat, hard disk is
@@ -110,7 +110,7 @@ me switch to gnome for now.
     -   Enable intel virtualization technology,
     -   Disable `quick boot`.
 
-## Kubuntu Installation<a id="sec-2-2"></a>
+### Kubuntu Installation<a id="sec-2-2"></a>
 
 -   Minimal installation (and also minimal fonts!).
 -   Connected to wifi.
@@ -123,34 +123,34 @@ me switch to gnome for now.
 -   I’ve tried enabling and disabling the secure boot, clearing the keys, etc.
     In the end turning off quick boot to diagnostic boot did thfde trick.
 
-## After installation<a id="sec-2-3"></a>
+### After installation<a id="sec-2-3"></a>
 
 -   Scaling needs to be set to 2 (or you need a magnifying glass).
 -   Mouse -> reverse scroll direction.
 
-### Chrome<a id="sec-2-3-1"></a>
+#### Chrome<a id="sec-2-3-1"></a>
 
 ```sh
 $ sudo apt install chromium-browser
 ```
 
-### Nvidia<a id="sec-2-3-2"></a>
+#### Nvidia<a id="sec-2-3-2"></a>
 
 ```sh
 $ ubuntu-drivers devices
 
-# and if you agree with the recomendation
+## and if you agree with the recomendation
 $ sudo ubuntu-drivers autoinstall
 
-# reboot and then you can:
-## check with card is in use
+## reboot and then you can:
+### check with card is in use
 prime-select query
 
-## select one of them
+### select one of them
 sudo prime-select intel
 sudo prime-select nvidia
 
-## and reboot
+### and reboot
 ```
 
 1.  glxgears on intel
@@ -175,7 +175,7 @@ sudo prime-select nvidia
     C73643 frames in 5.0 seconds = 14728.479 FPS
     ```
 
-### Keybase<a id="sec-2-3-3"></a>
+#### Keybase<a id="sec-2-3-3"></a>
 
 <https://keybase.io/docs/the_app/install_linux>
 
@@ -195,7 +195,7 @@ run_keybase
 Restart was needed to fix a permission issue while cloning a git repo
 ```
 
-### Github ssh key<a id="sec-2-3-4"></a>
+#### Github ssh key<a id="sec-2-3-4"></a>
 
 Follow the steps from the website
 
@@ -210,7 +210,7 @@ And [add it to the account](https://github.com/settings/keys).
 Spacemacs clones some of the packages from github, and the running my config will
 fail, unless this is step is done.
 
-### Emacs<a id="sec-2-3-5"></a>
+#### Emacs<a id="sec-2-3-5"></a>
 
 ```sh
 $ sudo add-apt-repository ppa:kelleyk/emacs
@@ -221,7 +221,7 @@ $ cd ~/.emacs.d
 $ git checkout develop
 ```
 
-### Dotfiles<a id="sec-2-3-6"></a>
+#### Dotfiles<a id="sec-2-3-6"></a>
 
 ```sh
 $ sudo apt install git
@@ -232,15 +232,15 @@ $ make do-bootstrap
 $ make force-install
 ```
 
-### Zoom<a id="sec-2-3-7"></a>
+#### Zoom<a id="sec-2-3-7"></a>
 
 <https://kupczynski.info/2018/09/08/zoom-and-kubuntu.html>
 
-### IntelliJ<a id="sec-2-3-8"></a>
+#### IntelliJ<a id="sec-2-3-8"></a>
 
 Install from the toolbox <https://www.jetbrains.com/toolbox/app/>
 
-### Spotify<a id="sec-2-3-9"></a>
+#### Spotify<a id="sec-2-3-9"></a>
 
 ~As per the instructions in <https://www.spotify.com/pl/download/linux/>~
 
@@ -249,14 +249,14 @@ Spotify snap seems to work fine. It's in my dotfiles setup now.
 ```sh
 $ snap install spotify
 
-# There was a problem with scaling, spotify don’t honor the gnome scaling factor
+## There was a problem with scaling, spotify don’t honor the gnome scaling factor
 
 $ sudo emacs /usr/share/applications/spotify.desktop
 
-# Exec=spotify --force-device-scale-factor=2.0 %U
+## Exec=spotify --force-device-scale-factor=2.0 %U
 ```
 
-# Conclusion<a id="sec-3"></a>
+## Conclusion<a id="sec-3"></a>
 
 I'm really happy with the new machine, it can handle a lot of load and the setup
 was surprisingly easy. If they fix my airpods and improve the hidpi and external

@@ -24,7 +24,7 @@ ubuntu started again, but only in a text mode &#x2014; GDM failed to started.
 At this point, I've started suspecting the new SSD. But how to check if your SSD
 maybe faulty?
 
-# Badblocks?<a id="sec-1"></a>
+## Badblocks?<a id="sec-1"></a>
 
 The SSDs use [wear leveling](https://en.wikipedia.org/wiki/Wear_leveling),
 contain redundant blocks and employ various techniques to improve their
@@ -64,7 +64,7 @@ And an answer below
 > none of those blocks should test bad, and if they do, some functioning of the
 > drive has failed.
 
-# S.M.A.R.T<a id="sec-2"></a>
+## S.M.A.R.T<a id="sec-2"></a>
 
 Most modern hard drives have a built-in monitoring system called
 [S.M.A.R.T.](https://en.wikipedia.org/wiki/S.M.A.R.T.) It monitors the various
@@ -88,7 +88,7 @@ sudo smartctl --info /dev/sda
 
 More details are available with the `--all` (or `-a`).
 
-## Testing the drive<a id="sec-2-1"></a>
+### Testing the drive<a id="sec-2-1"></a>
 
 S.M.A.R.T. allows to run a self-test on the drive. There are three types of the
 test &#x2014; short, long and captive (details in the manual). I was interested
@@ -207,8 +207,8 @@ No Errors Logged
 SMART Self-test log structure revision number 0
 Warning: ATA Specification requires self-test log structure revision number = 1
 Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
-# 1  Extended offline    Completed without error       00%        80         -
-# 2  Short offline       Completed without error       00%        80         -
+## 1  Extended offline    Completed without error       00%        80         -
+## 2  Short offline       Completed without error       00%        80         -
 
 SMART Selective self-test log data structure revision number 0
 Note: revision number not 1 implies that no selective self-test has ever been run
@@ -415,7 +415,7 @@ Error 200 occurred at disk power-on lifetime: 0 hours (0 days + 0 hours)
 SMART Self-test log structure revision number 0
 Warning: ATA Specification requires self-test log structure revision number = 1
 Num  Test_Description    Status                  Remaining  LifeTime(hours)  LBA_of_first_error
-# 1  Extended offline    Completed without error       00%        92         -
+## 1  Extended offline    Completed without error       00%        92         -
 
 SMART Selective self-test log data structure revision number 0
 Note: revision number not 1 implies that no selective self-test has ever been run
