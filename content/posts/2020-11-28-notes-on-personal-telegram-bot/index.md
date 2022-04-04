@@ -84,7 +84,6 @@ The docs are really good and easy to work with. There's no tutorial, so I recomm
 
 2. Start with the following requests:
 
-{% raw %}
 ```
 @token = token-from-botfather
 @root = https://api.telegram.org/bot{{token}}
@@ -106,7 +105,6 @@ POST {{root}}/sendMessage?chat_id={{chat_id}}&text=Hello
 #### Check webhook status
 GET {{root}}/getWebhookInfo
 ```
-{% endraw %}
 
 ![VS code REST client session example](/archive/2020-11-telegram-bot-api-experiments.png)
 

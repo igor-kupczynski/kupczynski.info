@@ -46,7 +46,7 @@ I'm here!
 ```
 
 I was scratching my head. There are of course other tools in software engineers' 🧰, e.g. `netstat` or `ss`. We can find the PID of the process and then trace it back to its container:
-{% raw %}
+
 ```sh
 $ sudo netstat -ntlp | grep ':32567'
 tcp        0      0 0.0.0.0:32567              0.0.0.0:*               LISTEN      884710/nginx: maste
@@ -57,7 +57,7 @@ tcp        0      0 0.0.0.0:32567              0.0.0.0:*               LISTEN   
 $ for i in $(docker ps -a -q); do docker inspect -f '{{.State.Pid}} {{.Name}}' $i | grep 884710; done
 884710 /my-service-15
 ```
-{% endraw %}
+
 
 And we have the offender, it's `my-service-15` container.
 
@@ -77,13 +77,10 @@ $ grep -ri 884710 /sys/fs/cgroup 2>/dev/null
 
 In that case `a4e509ae2a0875153dce22362dd08aa1f026e2cd7684ff2bcbd355ba981bbe6b` is our container. 
 
-
-{% raw %}
 ```sh
 $ docker inspect -f '{{.Name}}' a4e509ae2a0875153dce22362dd08aa1f026e2cd7684ff2bcbd355ba981bbe6b
 /my-service-15
 ```
-{% endraw %}
 
 ## Host network mode
 
