@@ -44,7 +44,7 @@ url = "/index.xml"
 
 [params]
 custom_css = ["css/theme-override.css"]
-description = "Description TBD."
+description = "A blog on software engineering."
 footer = "© 2022 Igor Kupczyński. [Views are my own](/legal/)."
 
 [frontmatter]
