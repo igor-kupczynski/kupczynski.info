@@ -4,6 +4,7 @@ tags:
 - golang
 aliases:
 - /2019/12/15/fips-golang.html
+description: "If you work with US government entities or corporations in regulated markets the subject of FIPS compliance may come up."
 ---
 
 If you work with US government entities or corporations in regulated markets the subject of FIPS compliance may come up. [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) is a set of cryptographic standards that your application may need to adhere to.

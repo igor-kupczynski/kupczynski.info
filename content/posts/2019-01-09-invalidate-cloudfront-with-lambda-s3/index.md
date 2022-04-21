@@ -4,6 +4,7 @@ tags:
 - cloud
 aliases:
 - /2019/01/09/invalidate-cloudfront-with-lambda-s3.html
+description: "There are only two hard things in Computer Science: cache invalidation and naming things. In this post we will focus on cache invalidation."
 ---
 
 

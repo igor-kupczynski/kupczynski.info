@@ -5,8 +5,9 @@ tags:
 - network
 aliases:
 - /2022/01/30/privarte-link.html
+description: "Use cases for Private Link and differences in its implementation across the major Cloud Providers."
 ---
-Use cases for Private Link and differences in its implementation across the major Cloud Providers
+Use cases for Private Link and differences in its implementation across the major Cloud Providers.
 
 ## Private Link
 

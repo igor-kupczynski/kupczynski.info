@@ -4,6 +4,7 @@ tags:
 - linux
 aliases:
 - /2018/11/24/ubuntu-18-10-ulimits.html
+description: "Instruct systemd to set DefaultLimitNOFILE to 65k."
 ---
 
 The procedure changed on recent ubuntu compared to what I used to do. I used
