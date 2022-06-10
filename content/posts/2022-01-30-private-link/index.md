@@ -140,6 +140,7 @@ The scenario we need to watch out for is someone adding their own PP2 header, an
 | Name | AWS PrivateLink | Azure Private Link | GCP Private Service Connect |
 | Allows cross-region connections? | No | Yes | No |
 | PP2 header format | [Link](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#custom-tlv) | [Link](https://docs.microsoft.com/en-us/azure/private-link/private-link-service-overview#getting-connection-information-using-tcp-proxy-v2) | [Link](https://cloud.google.com/vpc/docs/configure-private-service-connect-producer#proxy-protocol) |
+| Can share LB with public internet traffic? | Yes | No, [see below](#azure-requires-different-lbs) | No, a dedicated _forwarding rule_ required  | 
 | Learn more | [PrivateLink product page](https://aws.amazon.com/privatelink/) | [Private Link overview and docs](https://docs.microsoft.com/en-us/azure/private-link/private-link-overview) | [Private Service Connect guide](https://cloud.google.com/vpc/docs/private-service-connect) |
 
 If you want to parse the PP2 headers in go—or compare notes on implementation—check [`tlvparse` package in pires/go-proxyproto](https://github.com/pires/go-proxyproto/tree/main/tlvparse). A go library which supports all of them.
@@ -169,7 +170,7 @@ $ aws ec2 describe-availability-zones --region us-east-1 | jq -c '.AvailabilityZ
 ```
 
 
-### Azure requires different LBs
+#### Azure requires different LBs
 
 You need a separate LB to handle Private Link traffic and public internet traffic. As soon as you attach Private Link Service to your LB it stops serving public internet traffic. At least this is what I've found in my tests, as far as I know, this limitation is not documented.
 
