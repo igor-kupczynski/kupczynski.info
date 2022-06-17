@@ -47,12 +47,13 @@ The patches are kept up-to-date against minor version releases and master. [List
 
 ### Build process
 
-Google maintains [docker images with patched go toolchain](https://github.com/golang/go/blob/dev.boringcrypto.go1.12/misc/boring/README.md), similar to `golang:x.y.z`.
+Google maintains [docker images with patched go toolchain](https://github.com/golang/go/blob/dev.boringcrypto.go1.17/misc/boring/README.md), similar to `golang:x.y.z`.
 
-> A Dockerfile that starts with FROM golang:1.8.3 can switch to FROM
-> goboring/golang:1.8.3b2 (see goboring/golang on Docker Hub) and should
-> need no other modifications.
+> A Dockerfile that starts with `FROM golang:1.17.2` can switch
+> to `FROM us-docker.pkg.dev/google.com/api-project-999119582588/go-boringcrypto/golang:1.17.2b7`
+> and should need no other modifications.
 > (...)
+> 
 > 
 > Caveat
 >
@@ -69,6 +70,12 @@ Google maintains [docker images with patched go toolchain](https://github.com/go
 >
 > To check whether a given binary is using BoringCrypto, run `go tool nm`
 > on it and check that it has symbols named `*_Cfunc__goboringcrypto_*`.
+
+#### Update 2022-06-17
+
+Looks like the goboring image on Dockerhub is no longer updated, see https://hub.docker.com/r/goboring/golang/tags. 🤔 The images used to be uploaded by [Filippo Valsorda](https://filippo.io) and [Katie Hockman](https://twitter.com/katie_hockman); both of them left google. Anyways, the team at google still produces the images, see https://github.com/golang/go/commit/114aa699324a92ba8162138a11707684af7b8993. I've changed the quote in the section above.
+
+
 
 ### Code changes
 
@@ -91,7 +98,7 @@ Note that the benchmarks were done in 2017, so the things might've improved (but
 
 I've created a [simple echo server in go](https://github.com/igor-kupczynski/fips-echo-server/tree/boringcrypto) to show what changes are needed to switch to the `dev.boringcrypto`. Check the diff between the "regular" (or "native") crypto and the boring version: <https://github.com/igor-kupczynski/fips-echo-server/compare/master...boringcrypto>:
 
-> The boringssl based toolchain is basically a drop in replacement. All we need to do is:
+The boringssl based toolchain is basically a drop in replacement. All we need to do is:
 
 ```diff
 --- Dockerfile	(master)
@@ -102,9 +109,9 @@ I've created a [simple echo server in go](https://github.com/igor-kupczynski/fip
 +FROM goboring/golang:1.13.4b4
 ```
 
-> There are some other changes in the branch, to add new option `-fipsMode`, which resets the ciphersuite to a FIPS compliant one. You may want to do something else, like still allow user configured ciphers as long as they are a subset of FIPS compliant ones, etc. But these changes are UX improvements when running in FIPS mode. No "core" app changes required.
+There are some other changes in the branch, e.g. to add new option `-fipsMode`, which resets the ciphersuite to a FIPS compliant one. You may want to do something else, like still allow user configured ciphers as long as they are a subset of FIPS compliant ones, etc. No "core" app changes required.
 
-> `testssl` reports this:
+`testssl` reports this:
 
 ```
 ...
@@ -117,6 +124,11 @@ I've created a [simple echo server in go](https://github.com/igor-kupczynski/fip
     TLSv1.2:   ECDHE-RSA-AES128-GCM-SHA256 ECDHE-RSA-AES256-GCM-SHA384 AES128-GCM-SHA256 AES256-GCM-SHA384
     TLSv1.3:   TLS_AES_128_GCM_SHA256 TLS_CHACHA20_POLY1305_SHA256 TLS_AES_256_GCM_SHA384
 ...
+```
+
+The relevant `Dockerfile` entry would look like this:
+```
+FROM us-docker.pkg.dev/google.com/api-project-999119582588/go-boringcrypto/golang:go1.17.11b7
 ```
 
 ## RedHat go toolchain
